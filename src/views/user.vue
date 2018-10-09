@@ -110,8 +110,8 @@
             }
         },
     created(){
-            console.log("vuex数据" + this.$store.state.uid)
-            this.id = this.$store.state.uid
+            console.log("vuex数据" + getCookie("uid"))
+            this.id = getCookie("uid")
             var that = this
             util.ajax.get('/api/wechat/user/'+that.id)
                 .then(function (response) {

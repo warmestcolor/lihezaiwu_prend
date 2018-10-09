@@ -177,7 +177,7 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-             util.ajax.get('/api/wechat/user/'+ this.$store.state.uid)
+             util.ajax.get('/api/wechat/user/'+ getCookie("uid"))
                 .then(function (response) {
                     console.log(response);
                     that.uid = response.data.data.uid

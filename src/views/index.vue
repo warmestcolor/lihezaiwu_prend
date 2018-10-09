@@ -104,6 +104,7 @@
     </div>
 </template>
 <script>
+    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     import axios from 'axios';
     export default {
@@ -126,8 +127,8 @@
             }
         },
         created(){
-            console.log("vuex数据" + this.$store.state.uid)
-            this.$store.commit('setuid', this.$store.state.uid)
+            console.log("vuex数据" + getCookie("isLogin"))
+            // this.$store.commit('setuid', )
             // console.log(this.GLOBAL)
             var that = this
             // util.ajax.get('/api/wechat/user/userInfo/test')

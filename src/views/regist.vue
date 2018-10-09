@@ -104,7 +104,7 @@
                         console.log(name)
                         console.log(valid)
                         console.log(data)
-                        util.ajax.put('/api/wechat/user/'+this.$store.state.uid, this.$qs.stringify(data))
+                        util.ajax.put('/api/wechat/user/'+getCookie("uid"), this.$qs.stringify(data))
                         .then(function (response) {
                             console.log(response);
                         })
