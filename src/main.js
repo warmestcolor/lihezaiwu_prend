@@ -33,7 +33,12 @@ router.beforeEach((to, from, next) => {
     console.log("跳转到" + to.fullPath);
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
-    if(!store.state.isLogin && to.query.uid != undefined){
+    if(sessionStorage.getItem("isLogin")){
+      //
+      next();
+      return false;
+    } else {
+      if(to.query.uid){
         // 重定向进入项目带uid
         console.log("已登录")
         console.log("跳转到" + to.fullPath)
@@ -43,21 +48,15 @@ router.beforeEach((to, from, next) => {
         router.push({path: url});
         return false
       }
-    // if(sessionStorage.getItem("isLogin")==undefined){
-    if(!store.state.isLogin){
-        // 第一次进入项目
-        console.log("未登录")
-        console.log("跳转到" + to.path)
-        sessionStorage.setItem("url", to.fullPath);
-        // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-        return false
-      }
-    if(sessionStorage.getItem("isLogin")){
-        // 用户使用后退返回到授权页，则默认回到首页
-        next()
-      }
-    next();
+      // 第一次进入项目
+      console.log("未登录")
+      console.log("跳转到" + to.path)
+      sessionStorage.setItem("url", to.fullPath);
+      // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      return false
+    }
+    // next();
 });
 
 router.afterEach(() => {
