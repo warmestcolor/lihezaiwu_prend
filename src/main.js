@@ -33,26 +33,42 @@ router.beforeEach((to, from, next) => {
     console.log("跳转到" + to.fullPath);
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
-    if(sessionStorage.getItem("isLogin")){
-      //
+    if(to.path === '/'){
       if(to.query.uid){
+        // from wechat
         store.commit('ADD_LOGIN_USER', to.query.uid)
+        // sessionStorage.setItem("isLogin", true);
         var url = sessionStorage.getItem("url")
         router.push({path: url});
         return false
+      } else {
+        // url = /
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+        return false
       }
-      next();
-      return false;
     } else {
-      // 第一次进入项目
-      console.log("未登录")
-      console.log("跳转到" + to.path)
       sessionStorage.setItem("url", to.fullPath);
-      // sessionStorage.setItem("isLogin", true);
-      // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-      window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      if (sessionStorage.getItem("isLogin")) {
+        next();
+      } else {
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      }
       return false
     }
+    // if(sessionStorage.getItem("isLogin")){
+    //   //
+    //   next();
+    //   return false;
+    // } else {
+    //   // 第一次进入项目
+    //   console.log("未登录")
+    //   console.log("跳转到" + to.path)
+    //   sessionStorage.setItem("url", to.fullPath);
+    //   sessionStorage.setItem("isLogin", true);
+    //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+    //   window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+    //   return false
+    // }
     // next();
 });
 
