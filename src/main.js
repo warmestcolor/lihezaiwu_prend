@@ -1,13 +1,14 @@
 import Vue from 'vue';
-import 'es6-promise/auto'
-import Vuex from 'vuex'
+import 'es6-promise/auto';
+import Vuex from 'vuex';
 import iView from 'iview';
 import VueRouter from 'vue-router';
 import Routers from './router';
 import store from './data/store';
 import Util from './libs/util';
 import App from './app.vue';
-import Qs from 'qs'   //引入方式
+import Qs from 'qs';   //引入方式
+import {getCookie, setCookie, delCookie} from './libs/cookie';
 Vue.prototype.$qs = Qs 
 // import global from './global'//引用文件
 // Window.GLOBAL = global//挂载到Vue实例上面
@@ -27,33 +28,33 @@ const RouterConfig = {
 const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
-    store.commit('setuid', sessionStorage.getItem("uid"))
+    store.commit('setuid', getCookie("uid"))
     iView.LoadingBar.start();
     Util.title(to.meta.title);
     console.log("跳转到" + to.fullPath);
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
-    if(sessionStorage.getItem("isLogin")) {
+    if(getCookie("isLogin")) {
       next();
       return false;
     }
-    if(sessionStorage.getItem("prepareLogin")){
-      sessionStorage.removeItem("prepareLogin");
+    if(getCookie("prepareLogin")){
+      delCookie("prepareLogin");
       // 底下应该是登录操作
       if(to.query.uid){
         // from wechat
-        sessionStorage.setItem("isLogin", true);
-        sessionStorage.setItem("uid", to.query.uid);
-        var url = sessionStorage.getItem("url")
+        setCookie("isLogin", true);
+        setCookie("uid", to.query.uid);
+        var url = getCookie("url")
         router.push({path: url});
       } else {
-        var url = sessionStorage.getItem("url")
+        var url = getCookie("url")
         router.push({path: url});
       }
       return false
     } else {
-      sessionStorage.setItem("prepareLogin", "true");
-      sessionStorage.setItem("url", to.fullPath);
+      setCookie("prepareLogin", "true");
+      setCookie("url", to.fullPath);
       window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
       return false
     }
