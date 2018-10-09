@@ -33,28 +33,31 @@ router.beforeEach((to, from, next) => {
     console.log("跳转到" + to.fullPath);
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
-    if(to.path === '/'){
+    if(sessionStorage.getItem("isLogin")) {
+      next();
+      return false;
+    }
+    if(sessionStorage.getItem("prepareLogin")){
+      sessionStorage.removeItem("prepareLogin");
+      // 底下应该是登录操作
       if(to.query.uid){
         // from wechat
-        store.commit('ADD_LOGIN_USER', to.query.uid)
-        // sessionStorage.setItem("isLogin", true);
+        sessionStorage.setItem("isLogin", true);
+        sessionStorage.setItem("uid", to.query.uid);
         var url = sessionStorage.getItem("url")
         router.push({path: url});
-        return false
       } else {
-        // url = /
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-        return false
-      }
-    } else {
-      sessionStorage.setItem("url", to.fullPath);
-      if (sessionStorage.getItem("isLogin")) {
-        next();
-      } else {
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+        var url = sessionStorage.getItem("url")
+        router.push({path: url});
       }
       return false
+    } else {
+      sessionStorage.setItem("prepareLogin", "true");
+      sessionStorage.setItem("url", to.fullPath);
+      window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      return false
     }
+
     // if(sessionStorage.getItem("isLogin")){
     //   //
     //   next();
