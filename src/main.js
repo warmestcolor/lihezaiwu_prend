@@ -32,6 +32,10 @@ router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
     console.log("跳转到" + to.fullPath);
+    if(to.path.indexOf('/api/') >= 0){
+      next();
+      return false;
+    }
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
     if(getCookie("isLogin")) {
