@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
     console.log("跳转到" + to.fullPath);
     console.log("uid" + to.query.uid);
     console.log(store.state.uid);
-    if(sessionStorage.getItem("isLogin")==undefined && to.query.uid != undefined){
+    if(!store.state.isLogin && to.query.uid != undefined){
         // 重定向进入项目带uid
         console.log("已登录")
         console.log("跳转到" + to.fullPath)
@@ -43,7 +43,8 @@ router.beforeEach((to, from, next) => {
         router.push({path: url});
         return false
       }
-    if(sessionStorage.getItem("isLogin")==undefined){
+    // if(sessionStorage.getItem("isLogin")==undefined){
+    if(!store.state.isLogin){
         // 第一次进入项目
         console.log("未登录")
         console.log("跳转到" + to.path)
