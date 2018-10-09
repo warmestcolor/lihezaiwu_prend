@@ -48,7 +48,7 @@ router.beforeEach((to, from, next) => {
         console.log("未登录")
         console.log("跳转到" + to.path)
         sessionStorage.setItem("url", to.fullPath);
-        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1326cea38393a6d3&redirect_uri=https://weixin.leaguervc.com/api/wechat/user/userInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+        window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1326cea38393a6d3&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo%3Fresponse_type%3Dcode%26scope%3Dsnsapi_userinfo#wechat_redirect"
         return false
       }
     if(sessionStorage.getItem("isLogin")){
