@@ -172,6 +172,7 @@
 </div>
 </template>
 <script>
+    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     export default {
         data () {
