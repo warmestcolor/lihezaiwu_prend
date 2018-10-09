@@ -35,23 +35,20 @@ router.beforeEach((to, from, next) => {
     console.log(store.state.uid);
     if(sessionStorage.getItem("isLogin")){
       //
-      next();
-      return false;
-    } else {
       if(to.query.uid){
-        // 重定向进入项目带uid
-        console.log("已登录")
-        console.log("跳转到" + to.fullPath)
-        store.commit('ADD_LOGIN_USER', to.query.uid) 
-        console.log("当前uid " + store.state.uid)
+        store.commit('ADD_LOGIN_USER', to.query.uid)
         var url = sessionStorage.getItem("url")
         router.push({path: url});
         return false
       }
+      next();
+      return false;
+    } else {
       // 第一次进入项目
       console.log("未登录")
       console.log("跳转到" + to.path)
       sessionStorage.setItem("url", to.fullPath);
+      // sessionStorage.setItem("isLogin", true);
       // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
       window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
       return false
