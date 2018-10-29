@@ -44,17 +44,53 @@ const routers = [{
     },
     component: (resolve) => require(['./views/highItemlist.vue'], resolve)
 },{
-    path: '/item',
+    path: '/activitylist',
+    meta: {
+        title: '线下活动'
+    },
+    component: (resolve) => require(['./views/activityList.vue'], resolve)
+},{
+    path: '/recommend',
+    meta: {
+        title: '项目推荐'
+    },
+    component: (resolve) => require(['./views/recommendList.vue'], resolve)
+},{
+    path: '/resource',
+    meta: {
+        title: '项目资源'
+    },
+    component: (resolve) => require(['./views/resourceList.vue'], resolve)
+},{
+    path: '/project',
     meta: {
         title: '项目详情'
     },
-    component: (resolve) => require(['./views/item.vue'], resolve)
+    component: (resolve) => require(['./views/projectItem.vue'], resolve)
+},{
+    path: '/live',
+    meta: {
+        title: '直播详情'
+    },
+    component: (resolve) => require(['./views/liveItem.vue'], resolve)
+},{
+    path: '/activity',
+    meta: {
+        title: '活动详情'
+    },
+    component: (resolve) => require(['./views/activityItem.vue'], resolve)
 },{
     path: '/regist',
     meta: {
         title: '用户激活'
     },
     component: (resolve) => require(['./views/regist.vue'], resolve)
+},{
+    path: '/update',
+    meta: {
+        title: '用户更新'
+    },
+    component: (resolve) => require(['./views/update.vue'], resolve)
 },{
     path: '/test',
     meta: {

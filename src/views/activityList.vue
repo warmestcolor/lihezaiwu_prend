@@ -18,18 +18,21 @@
 <template>
     <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
-            文章列表
+            线下活动
             <div slot="content">
-            <div v-for="(item, index) in articleList" :key="index" style="padding-top: 10px">
-            <Card @click.native="goArticle(item.id)">
-            <p slot="title">{{item.title}}</p>
-            <p href="#" slot="extra">
-            <!-- <Icon type="ios-loop-strong"></Icon> -->
-            {{item.inserted_at.slice(0,10)}}
-            </p>
-            <p>新闻</p>
-        </Card>
-        </div>
+            <div style="padding-top: 10px" v-for="(item, index) in activityList" :key="index">
+        <Card @click.native="goActivity(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <!-- <a href="#" slot="extra" @click.prevent="changeLimit">
+            <Icon type="ios-loop-strong"></Icon>
+            进行中
+            </a> -->
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describle}}</p>
+            </Card>
+            </div>
             </div>
         </Panel>
     </Collapse>
@@ -37,25 +40,16 @@
 <script>
     import util from '../libs/util'
     export default {
-                data () {
+        data () {
             return {
-                project: [1, 2, 3, 4],
-                articleList: [],
+                activityList: [11, 12, 13],
                 value1: '1'
             }
         },
-
         methods: {
-            goArticle(itemId) {
-                this.$router.push({path: '/article'+'?id='+itemId});
+            goActivity(itemId) {
+                this.$router.push({path: '/activity'+'?id='+itemId});
             },
-            handleStart() {
-                    this.$Modal.info({
-                    title: 'Bravo',
-                    content: 'Now, enjoy iView.'
-                });
-            },
-
             handleReachBottom () {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -68,21 +62,21 @@
                 });
             },
             goLink(itemId) {
-                this.$router.push({path: '/article'+'?id='+itemId});
+                this.$router.push({path: '/item'+'?id='+itemId});
             }
         },
         created(){
             console.log(this.GLOBAL)
             var that = this
-            this.getRequest('/api/articles')
+            this.getRequest('/api/activities')
                 .then(function (response) {
                     console.log(response);
-                    console.log(that.articleList);
-                    that.articleList = response.data.data
+                    console.log(that.activityList);
+                    that.activityList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);
                });
         }  
-    };
+    }
 </script>

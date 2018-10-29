@@ -16,26 +16,39 @@
     }
 </style>
 <template>
-    <Scroll :on-reach-bottom="handleReachBottom" height="670px">
-        <Row span="24" class="title">
-            <Col span="22">项目列表</Col>
-
-        </Row>
-        <Card @click.native="goLink(item.itemId)" dis-hover v-for="(item, index) in itemlist" :key="index" style="padding: 4px 12px">
-            {{ item.itemName }}
+    <Collapse v-model="value1" >
+        <Panel style="font-size: 20px" name="1">
+            投资项目
+            <div slot="content">
+        <div style="padding-top: 10px" v-for="(item, index) in normalList" :key="index">
+        <Card @click.native="goProject(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p slot="extra">
+            投资项目
+            </p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describe}}</p>
         </Card>
-
-    </Scroll>
+        </div>
+            </div>
+        </Panel>
+    </Collapse>
 </template>
 <script>
     import util from '../libs/util'
     export default {
         data () {
             return {
-                itemlist: [11, 12, 13]
+                normalList: [],
+                value1: '1'
             }
         },
         methods: {
+            goProject(itemId) {
+                this.$router.push({path: '/project'+'?id='+itemId});
+            },
             handleReachBottom () {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -54,11 +67,11 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            util.ajax.get('/api/item/normal')
+            this.getRequest('/api/projects_normal')
                 .then(function (response) {
                     console.log(response);
-                    console.log(that.itemlist);
-                    that.itemlist = response.data.data
+                    console.log(that.activityList);
+                    that.normalList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);

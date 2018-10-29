@@ -91,27 +91,121 @@
                 </a>
             </Col>
         </Row>
-        <Row span="24" class="title">
+        <Row span="24">
+        <Tabs value="name1" span="24" style="width: 100%">
+        <TabPane label="路演通知" name="name1" >
+        <div style="padding: 10px 20px 10px 20px" v-for="(item, index) in liveList" :key="index">
+        <Card @click.native="goLive(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p v-if="item.type=='high'" slot="extra">
+            领投基金
+            </p>
+            <p v-if="item.type=='normal'" slot="extra">
+            投资项目
+            </p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describe}}</p>
+        </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Button to="/zhibo" type="info" long>更多</Button>
+        </div>
+        </TabPane>
+        <TabPane label="项目信息" name="name2" >
+        <div style="padding: 10px 20px 10px 20px"  v-for="(item, index) in projectList" :key="index">
+        <Card @click.native="goProject(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p v-if="item.type=='high'" slot="extra">
+            领投基金
+            </p>
+            <p v-if="item.type=='normal'" slot="extra">
+            投资项目
+            </p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describe}}</p>
+        </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Button to="/touzi" type="info" long>更多</Button>
+        </div>
+        </TabPane>
+        
+        <TabPane label="线下活动" name="name3" >
+        <div style="padding: 10px 20px 10px 20px" v-for="(item, index) in activityList" :key="index">
+        <Card @click.native="goActivity(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <!-- <a href="#" slot="extra" @click.prevent="changeLimit">
+            <Icon type="ios-loop-strong"></Icon>
+            进行中
+            </a> -->
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describle}}</p>
+        </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Button to="/activitylist" type="info" long>更多</Button>
+        </div>
+        </TabPane>
+        <TabPane label="公司动态" name="name4" >
+        <div v-for="(item, index) in articleList" :key="index" style="padding: 10px 20px 10px 20px">
+        <Card @click.native="goArticle(item.id)">
+            <p slot="title">{{item.title}}</p>
+            <p href="#" slot="extra">
+            <!-- <Icon type="ios-loop-strong"></Icon> -->
+            {{item.inserted_at.slice(0,10)}}
+            </p>
+            <p>文章</p>
+        </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Card>
+            <p slot="title">我公司XXX活动圆满结束</p>
+            <p href="#" slot="extra">
+            <!-- <Icon type="ios-loop-strong"></Icon> -->
+            
+            </p>
+            <p>新闻</p>
+        </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Button to="/news" type="info" long>更多</Button>
+        </div>
+
+            <!-- <Row span="24" class="title">
             <Col span="22">最新动态</Col>
             <a href="/news" span="2">
                 <Col span="2">更多</Col>
             </a>
-        </Row>
-        <Card span="24" @click.native="goLink(item.articleId)" v-for="(item, index) in articleList" :key="index" style="height: 50px">
+            <Card span="24" @click.native="goLink(item.articleId)" v-for="(item, index) in articleList" :key="index" style="height: 50px">
             <Col span="14">{{ item.articleTitle}}</Col>
             <Col span="10">{{item.createTime}}</Col>
-        </Card>
+            </Card>
+            </Row> -->
+        </TabPane>
+        </Tabs>
+        </Row>
     </div>
 </template>
 <script>
-    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     import axios from 'axios';
+    import moment from 'moment';
+import Vue from 'vue';
+
     export default {
                 data () {
             return {
                 project: [1, 2, 3, 4],
-                articleList: []
+                articleList: [],
+                activityList: [],
+                projectList: [],
+                liveList: [],
             }
         },
 
@@ -122,13 +216,22 @@
                     content: 'Now, enjoy iView.'
                 });
             },
-            goLink(itemId) {
+            goProject(itemId) {
+                this.$router.push({path: '/project'+'?id='+itemId});
+            },
+            goArticle(itemId) {
                 this.$router.push({path: '/article'+'?id='+itemId});
+            },
+            goLive(itemId) {
+                this.$router.push({path: '/live'+'?id='+itemId});
+            },
+            goActivity(itemId) {
+                this.$router.push({path: '/activity'+'?id='+itemId});
             }
         },
         created(){
-            console.log("vuex数据" + getCookie("isLogin"))
-            // this.$store.commit('setuid', )
+            console.log("vuex数据" + this.$store.state.uid)
+            this.$store.commit('setuid', this.$store.state.uid)
             // console.log(this.GLOBAL)
             var that = this
             // util.ajax.get('/api/wechat/user/userInfo/test')
@@ -149,11 +252,34 @@
             //             console.log(error);
             //     });
             
-            util.ajax.get('/api/article/page?page=0&size=5')
+            this.getRequest('/api/articles?page=0&size=3')
                 .then(function (response) {
                     console.log(response);
-                    console.log(that.articleList);
-                    that.articleList = response.data.data.content
+                    that.articleList = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+               });
+            this.getRequest('/api/activities?page=0&size=3')
+                .then(function (response) {
+                    console.log(response);
+                    that.activityList = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+               });
+            this.getRequest('/api/projects?page=0&size=3')
+                .then(function (response) {
+                    console.log(response);
+                    that.projectList = response.data.data
+                })
+                .catch(function (error) {
+                    console.log(error);
+               });
+            this.getRequest('/api/lives?page=0&size=3')
+                .then(function (response) {
+                    console.log(response);
+                    that.liveList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);

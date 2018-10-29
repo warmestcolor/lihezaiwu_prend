@@ -85,13 +85,13 @@
             console.log(this.$route.query.id)
             var that = this
             this.id = this.$route.query.id
-            util.ajax.get('/api/article/' + that.id)
+            this.getRequest('/api/articles/' + that.id)
                 .then(function (response) {
                     console.log(response);
-                    that.id = response.data.data.articleId
-                    that.title = response.data.data.articleTitle
-                    that.details = response.data.data.articleDetails
-                    that.createTime = response.data.data.createTime
+                    that.id = response.data.data.id
+                    that.title = response.data.data.title
+                    that.details = response.data.data.detail
+                    that.createTime = response.data.data.inserted_at.slice(0,10)
                 })
                 .catch(function (error) {
                     console.log(error);

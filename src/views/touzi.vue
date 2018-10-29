@@ -16,37 +16,63 @@
     }
 </style>
 <template>
-    <Scroll :on-reach-bottom="handleReachBottom" height="670px">
-        <Row span="24" class="title">
-            <Col span="22">投资项目</Col>
-            <a href="/normal" span="2">
-                <Col span="2">更多</Col>
-            </a>
-        </Row>
-        <Card @click.native='goLink(item.itemId)' dis-hover v-for="(item, index) in project" :key="index" style="padding: 4px 12px">
-            {{item.itemName}}
+    <Collapse v-model="value1" >
+        <Panel style="font-size: 20px" name="1">
+            投资项目
+            <div slot="content">
+        <div style="padding-top: 10px" v-for="(item, index) in normalList" :key="index">
+        <Card @click.native="goProject(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p slot="extra">
+            投资项目
+            </p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describe}}</p>
         </Card>
-        <Row span="24" class="title">
-            <Col span="22">领投基金</Col>
-            <a href="/high" span="2">
-                <Col span="2">更多</Col>
-            </a>
-        </Row>
-        <Card @click.native='goLink(item.itemId)' dis-hover v-for="(item, index) in jijin" :keye="index" style="padding: 4px 12px">
-            {{item.itemName}}
+        </div>
+        <div style="padding-top: 10px">
+        <Button to="/normal" type="info" long>更多项目</Button>
+        </div>
+        </div>
+        </Panel>
+         <Panel style="font-size: 20px" name="2">
+            领投基金
+            <div slot="content">
+            <div style="padding-top: 10px" v-for="(item, index) in highList" :key="index">
+        <Card @click.native="goProject(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p slot="extra">
+            领投基金
+            </p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describe}}</p>
         </Card>
-    </Scroll>
+        </div>
+        <div style="padding-top: 10px">
+        <Button to="/high" type="info" long>更多基金</Button>
+        </div>
+        </div>
+        </Panel>
+    </Collapse>
 </template>
 <script>
     import util from '../libs/util'
     export default {
         data () {
             return {
-                project: [1, 2, 3, 4],
-                jijin: [11, 12, 13]
+                normalList: [1, 2, 3, 4],
+                highList: [11, 12, 13],
+                value1: ['1', '2']
             }
         },
         methods: {
+            goProject(itemId) {
+                this.$router.push({path: '/project'+'?id='+itemId});
+            },
             handleReachBottom () {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -64,22 +90,22 @@
         },
         created(){
             var that = this
-            util.ajax.get('/api/item/normal')
+            this.getRequest('/api/projects_normal?page=0&size=1')
                 .then(function (response) {
                     console.log(response);
-                    that.project = response.data.data
+                    that.normalList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
-            util.ajax.get('/api/item/high')
+               });
+            this.getRequest('/api/projects_high?page=0&size=1')
                 .then(function (response) {
                     console.log(response);
-                    that.jijin = response.data.data
+                    that.highList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
+               });
         }
     }
 </script>

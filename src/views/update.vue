@@ -18,7 +18,7 @@
 <template>
 <div class="index">
     <Row span="24" class="title">
-        <Col span="22">用户激活</Col>
+        <Col span="22">用户更新</Col>
     </Row>
     <div style="width: 75%; margin-top: 15%; margin-left: 10%">
     <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">

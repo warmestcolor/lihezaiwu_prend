@@ -18,16 +18,22 @@
 <template>
     <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
-            文章列表
+            资源列表
             <div slot="content">
-            <div v-for="(item, index) in articleList" :key="index" style="padding-top: 10px">
-            <Card @click.native="goArticle(item.id)">
-            <p slot="title">{{item.title}}</p>
+            <div v-for="(item, index) in resourceList" :key="index" style="padding-top: 10px">
+            <Card v-if="item.can_download" @click.native="goArticle(item.id)">
+            <p slot="title">{{item.name}}</p>
             <p href="#" slot="extra">
-            <!-- <Icon type="ios-loop-strong"></Icon> -->
-            {{item.inserted_at.slice(0,10)}}
+            下载资源
             </p>
-            <p>新闻</p>
+            <p>价格：{{item.price}} ¥ 已购买</p>
+        </Card>
+        <Card v-else @click.native="goArticle(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <p href="#" slot="extra">
+            购买资源
+            </p>
+            <p>价格：{{item.price}} ¥</p>
         </Card>
         </div>
             </div>
@@ -40,7 +46,7 @@
                 data () {
             return {
                 project: [1, 2, 3, 4],
-                articleList: [],
+                resourceList: [],
                 value1: '1'
             }
         },
@@ -74,11 +80,10 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            this.getRequest('/api/articles')
+            util.ajax.get('/api/projects/'+this.$route.query.id+'/resources')
                 .then(function (response) {
                     console.log(response);
-                    console.log(that.articleList);
-                    that.articleList = response.data.data
+                    that.resourceList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);

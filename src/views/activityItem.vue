@@ -60,34 +60,28 @@
     }
 </style>
 <template>
-    <div class="index">
-        <Row type="flex" style="height: 250px; background-color: #5E32BD">
-            <!-- <div style="width: 100%; align="top" justify="center" text-align: center">
-                <Avatar style="width: 80px; height: 80px;border-radius: 40px; margin-top: 50px" vertical-align="middle" justify="center" align="middle" icon="ios-person" size=large src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
-            </div> -->
-            <div style="width: 100%; font-size: 24px; color: white; margin-top: 20px; margin-left: 20px; height: 50px">{{name}}</div>
-            <hr style="width: 90%; font-size: 18px; color: white; margin-left: 5%" align="top"></hr>
-            <div style="width: 90%; font-size: 18px; color: white; margin-top: 20px; margin-left: 5%">{{describe}}</div>
-        </Row>
-        <Row style="margin-top: 20px" span="24" class="title">
-            <Col span="22">选项</Col>
-            <!-- <a href="/list" span="2">
-                <Col span="2">更多</Col>
-            </a> -->
-        </Row>
-        <Card @click.native="goLive(liveId)" style="padding: 4px 12px">
-            项目直播
+    <div class="index" style="background:#eee">
+         <div style="background:#eee;padding: 10px 10px 10px 10px">
+        <Card :bordered="false">
+            <p slot="title" style="font-size: 20px">{{name}}</p>          
+            <div style="text-align:center">
+            <img :src="image_url" style="width:100%">
+            </div>
+            <p>{{describe}}</p>
+            <p>开始时间 {{start_time}}</p>
+            <p>结束时间 {{end_time}}</p>
         </Card>
-        <Card @click.native="getFile" style="padding: 4px 12px">
-            资料下载
+        </div>
+       <div style="padding: 10px;background:#eee">
+        <Card title="选项" icon="ios-options" :padding="0">
+            <CellGroup>
+                <Cell title="我要报名" extra="details" to="/components/button" />
+            </CellGroup>
         </Card>
-        <Card @click.native="checkIn" style="padding: 4px 12px">
-            我要投资
-        </Card>
+    </div>
     </div>
 </template>
 <script>
-    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     export default {
         data () {
@@ -102,7 +96,9 @@
                 resourceId: null,     
                 resourcePrice: null,
                 openId: null,
-                liveId: null,
+                start_time: null,
+                end_time: null,
+                image_url: null,
             }
         },
         methods: {
@@ -131,54 +127,27 @@
                     title: '报名成功',
                     content: '随后我们将会与您取得联系， 感谢您的关注'
                 });
-            },
-            goLive(id){
-                if(id != null&&id != undefined){
-                window.location.href = "https://ghlive.cn/"+id
-                // this.$router.push({path: '/item'+'?id='+itemId});    
-                }
-                this.$Message.warning('该项目暂无直播');
-                    return false
-            },
-            getFile() {
-                var that = this
-                if (that.resourceId == null || that.resourceId == undefined){
-                    this.$Message.warning('该项目暂无可下载资源');
-                    return false
-                }
-                util.ajax.get('/api/resource/'+that.resourceId)
-                    .then(function (response) {
-                        console.log(response);
-                        that.$Modal.success({
-                            title: '获取成功',
-                            content: '请将文件链接拷贝到微信外的浏览器进行下载：\n'+response.data.data.resourcePath
-                });
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },
-            goLink() {
-                this.$router.push({name: 'item'});
             }
         },
     created(){
         console.log(this.$route.query.id)
         var that = this
         this.id = this.$route.query.id
-            util.ajax.get('/api/item/'+this.$route.query.id)
+            this.getRequest('/api/activities/'+this.$route.query.id)
                 .then(function (response) {
                     console.log(response);
-                    that.name = response.data.data.itemName
-                    that.describe = response.data.data.itemDescribe
+                    that.name = response.data.data.name
+                    that.describe = response.data.data.describle
                     that.type = response.data.data.itemType
                     that.resourceId = response.data.data.resourceId
-                    that.liveId = response.data.data.itemLiveId
+                    that.start_time = response.data.data.start_time.slice(0,10)
+                    that.end_time = response.data.data.end_time.slice(0,10)
+                    that.image_url = response.data.data.image_url
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-             util.ajax.get('/api/wechat/user/'+ getCookie("uid"))
+             this.getRequest('/api/wechat/user/'+ this.$store.state.uid)
                 .then(function (response) {
                     console.log(response);
                     that.uid = response.data.data.uid

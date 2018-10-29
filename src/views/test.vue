@@ -166,13 +166,12 @@
         <Radio label=6>D 超过50%</Radio>
     </RadioGroup>
     </div>
-    <div style="text-align: center">
-    <Button type="primary" @click="handleSubmit()">Submit</Button>
-    </div>
+        <div style="padding: 10px 20px 10px 20px">
+        <Button type="info" long>提交</Button>
+        </div>
 </div>
 </template>
 <script>
-    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     export default {
         data () {
@@ -244,7 +243,7 @@
                             score: s,
                             touziType: t
                         }
-                    util.ajax.put('/api/wechat/user/' + getCookie("uid"), this.$qs.stringify(data))
+                    util.ajax.put('/api/wechat/user/'+this.$store.state.uid, this.$qs.stringify(data))
                             .then(function (response) {
                             console.log(response);
                             console.log(s)
@@ -266,8 +265,8 @@
             }
         },
         created(){
-            console.log("vuex数据" + getCookie("uid"))
-            this.id = getCookie("uid")
+            console.log("vuex数据" + this.$store.state.uid)
+            this.id = this.$store.state.uid
             var that = this
             util.ajax.get('/api/wechat/user/'+that.id)
                 .then(function (response) {

@@ -16,14 +16,23 @@
     }
 </style>
 <template>
-    <Scroll :on-reach-bottom="handleReachBottom" height="670px">
-        <Row span="24">
-            <div class="title">直播列表</div>
-        </Row>
-        <Card dis-hover @click.native="goLink(item.liveId)" v-for="(item, index) in itemlist" :key="index" style="padding: 4px 12px">
-            {{ item.liveName}}
+    <Collapse v-model="value1" >
+        <Panel style="font-size: 20px" name="1">
+            直播路演
+            <div slot="content">
+            <div style="padding-top: 10px" v-for="(item, index) in liveList" :key="index">
+        <Card @click.native="goLive(item.id)">
+            <p slot="title">{{item.name}}</p>
+            <div style="text-align:center">
+            <img :src= "item.image_url" style="width: 100%">
+            </div>
+            <p>{{item.describle}}</p>
         </Card>
-    </Scroll>
+        </div>
+        </div>
+        </Panel>
+    </Collapse>
+</template>
 </template>
 <script>
     import util from '../libs/util'
@@ -32,10 +41,14 @@
             return {
                 current: [1, 2, 3, 4, 5, 6, 7],
                 history: [11, 12, 13],
-                itemlist: []
+                liveList: [],
+                value1: '1'
             }
         },
         methods: {
+            goLive(itemId) {
+                this.$router.push({path: '/live'+'?id='+itemId});
+            },
             handleReachBottom () {
                 return new Promise(resolve => {
                     setTimeout(() => {
@@ -54,12 +67,12 @@
         },
         created(){
             console.log(this.GLOBAL)
+            console.log(this.$router)
             var that = this
-            util.ajax.get('/api/live/list')
+            this.getRequest('/api/lives')
                 .then(function (response) {
                     console.log(response);
-                    console.log(that.itemlist);
-                    that.itemlist = response.data.data
+                    that.liveList = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);

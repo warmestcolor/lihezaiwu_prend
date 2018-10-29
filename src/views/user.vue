@@ -65,8 +65,30 @@
             <div style="width: 100%; text-align: center">
                 <Avatar :src="url" style="width: 80px; height: 80px;border-radius: 40px; margin-top: 50px" vertical-align="middle" justify="center" align="middle" icon="ios-person" size=large />
             </div>
-            <div style="font-size: 18px; text-align: center">{{name}}</div>
+            <div style="font-size: 18px; text-align: center">用户名</div>
         </Row>
+               <div style="padding: 10px">
+        <Card title="选项" icon="ios-options" :padding="0">
+            <CellGroup>
+                <!-- <Cell title="Only show titles" />
+                <Cell title="Display label content" label="label content" />
+                <Cell title="Display right content" extra="details" /> -->
+                <Cell title="激活" extra="details" to="/regist" />
+                <Cell title="更新用户信息" extra="details" to="/update" />
+                <Cell title="合格投资人认证" extra="details" to="/test" />
+                <Cell title="我的推荐" extra="details" to="/recommend" />
+                <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
+                <Cell title="Disabled" disabled />
+                <Cell title="Selected" selected />
+                <Cell title="With Badge" to="/components/badge">
+                    <Badge :count="10" slot="extra" />
+                </Cell>
+                <Cell title="With Switch">
+                    <Switch v-model="switchValue" slot="extra" />
+                </Cell> -->
+            </CellGroup>
+        </Card>
+    </div>
         <Row span="24" class="title">
             <Col span="22">用户</Col>
             <!-- <a href="/list" span="2">
@@ -85,7 +107,6 @@
     </div>
 </template>
 <script>
-    import {getCookie, setCookie, delCookie} from '../libs/cookie';
     import util from '../libs/util'
     export default {
     data () {
@@ -111,8 +132,8 @@
             }
         },
     created(){
-            console.log("vuex数据" + getCookie("uid"))
-            this.id = getCookie("uid")
+            console.log("vuex数据" + this.$store.state.uid)
+            this.id = this.$store.state.uid
             var that = this
             util.ajax.get('/api/wechat/user/'+that.id)
                 .then(function (response) {
