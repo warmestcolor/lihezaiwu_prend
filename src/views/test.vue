@@ -180,6 +180,8 @@
                 url: null,
                 id: null,
                 status: null,
+                is_real_people: false,
+                is_right_people: false,
                 score: [
                     0,
                     0,
@@ -255,10 +257,10 @@
                         .catch(function (error) {
                             console.log(error);
                         });
-                        // this.$Modal.success({
-                        //         title: '提交成功',
-                        //         content: '您的得分是：'+ s + '</br>您的风险识别能力和承担能力为：' + type
-                        //     });
+                        this.$Modal.success({
+                                title: '提交成功',
+                                content: '您的风险识别能力和承担能力为：' + type
+                            });
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
@@ -268,20 +270,20 @@
             console.log("vuex数据" + this.$store.state.uid)
             this.id = this.$store.state.uid
             var that = this
-            util.ajax.get('/api/wechat/user/'+that.id)
+            this.getRequest('/api/me')
                 .then(function (response) {
                     console.log(response);
-                    that.url = response.data.data.headIconUrl;
-                    that.name = response.data.data.nickname;
-                    that.status = response.data.data.memberStatus;
-                    console.log("当前状态"+that.status);
+                    that.is_real_people = response.data.data.is_real_people;
                     that.$Modal.warning({
                     title: '用户须知',
                     content: '力合载物谨遵基金业协会《私募投资基金募集行为管理办法》之规定，只向特定的合格投资者宣传推介相关私募投资基金产品'
                 });
-                if(that.status != "ACTIVED"){
+                if(!that.is_real_people){
                     this.$Message.warning('您还未激活，请激活您的账户');
                     this.$router.push({path: '/regist'});
+                    return false}
+                if(!that.is_right_people){
+                    this.$Message.warning('您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续');
                     return false
             }
                 })

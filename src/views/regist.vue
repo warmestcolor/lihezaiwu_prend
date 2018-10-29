@@ -58,6 +58,8 @@
                     realname: '',
                     idcard: '',
                     mail: '',
+                    is_real_people: false,
+                    is_right_people: false,
                     // passwd: '',
                     // passwdCheck: ''
                 },
@@ -104,7 +106,7 @@
                         console.log(name)
                         console.log(valid)
                         console.log(data)
-                        this.postRequest('/api/user/activitie', this.$qs.stringify(data))
+                        this.postRequest('/api/users/active', this.$qs.stringify(data))
                         .then(function (response) {
                             console.log(response);
                         })
@@ -112,7 +114,7 @@
                             console.log(error);
                         });
                         this.$Message.success('Success!');
-                        this.$router.push({path: '/user'});
+                        this.$router.go(-1)
                     } else {
                         this.$Message.error('Fail!');
                     }
@@ -121,6 +123,24 @@
             handleReset (name) {
                 this.$refs[name].resetFields();
             }
+        },
+        created(){
+            console.log("vuex数据" + this.$store.state.uid)
+            this.id = this.$store.state.uid
+            var that = this
+            this.getRequest('/api/me')
+                .then(function (response) {
+                    console.log(response);
+                    that.is_real_people = response.data.data.is_real_people;
+
+                if(!that.is_right_people){
+                    this.$Message.warning('您已经完成了激活，再次提交将覆盖您的信息，请确认是否继续');
+                    return false
+            }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     }
 </script>

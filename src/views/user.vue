@@ -73,9 +73,9 @@
                 <!-- <Cell title="Only show titles" />
                 <Cell title="Display label content" label="label content" />
                 <Cell title="Display right content" extra="details" /> -->
-                <Cell title="激活/更新用户信息" extra="details" to="/regist" />
-                <Cell title="合格投资人认证" extra="details" to="/test" />
-                <Cell title="我的推荐" extra="details" to="/recommend" />
+                <Cell title="激活/更新用户信息" to="/regist" />
+                <Cell title="合格投资人认证" to="/test" />
+                <Cell title="我的推荐" to="/recommend" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
                 <Cell title="Disabled" disabled />
                 <Cell title="Selected" selected />
