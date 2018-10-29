@@ -172,7 +172,7 @@
 </div>
 </template>
 <script>
-    import util from '../libs/util'
+    import util,{ postRequest } from '../libs/util'
     export default {
         data () {
             return {
@@ -243,24 +243,20 @@
                     console.log(t)
                     const data = {
                             score: s,
-                            touziType: t
                         }
-                    util.ajax.put('/api/wechat/user/'+this.$store.state.uid, this.$qs.stringify(data))
+                    this.postRequest('/api/users/apply', this.$qs.stringify(data))
                             .then(function (response) {
                             console.log(response);
                             console.log(s)
                             that.$Modal.success({
                                 title: '提交成功',
-                                content: '您的得分是：'+ s + '</br>您的风险识别能力和承担能力为：' + type
+                                content: '您的风险识别能力和承担能力为：' + type
                             });
                         })
                         .catch(function (error) {
                             console.log(error);
                         });
-                        this.$Modal.success({
-                                title: '提交成功',
-                                content: '您的风险识别能力和承担能力为：' + type
-                            });
+
             },
             handleReset (name) {
                 this.$refs[name].resetFields();
@@ -274,18 +270,20 @@
                 .then(function (response) {
                     console.log(response);
                     that.is_real_people = response.data.data.is_real_people;
-                    that.$Modal.warning({
-                    title: '用户须知',
-                    content: '力合载物谨遵基金业协会《私募投资基金募集行为管理办法》之规定，只向特定的合格投资者宣传推介相关私募投资基金产品'
-                });
                 if(!that.is_real_people){
                     that.$Message.warning('您还未激活，请激活您的账户');
                     that.$router.push({path: '/regist'});
                     return false}
-                if(!that.is_right_people){
-                    that.$Message.warning('您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续');
-                    return false
-            }
+                if(that.is_right_people){
+                    that.$Modal.warning({
+                    title: '提示',
+                    content: '您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续'
+                });
+                }
+                that.$Modal.warning({
+                    title: '用户须知',
+                    content: '力合载物谨遵基金业协会《私募投资基金募集行为管理办法》之规定，只向特定的合格投资者宣传推介相关私募投资基金产品'
+                });
                 })
                 .catch(function (error) {
                     console.log(error);

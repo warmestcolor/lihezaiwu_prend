@@ -109,14 +109,15 @@
                         this.postRequest('/api/users/active', this.$qs.stringify(data))
                         .then(function (response) {
                             console.log(response);
+                            that.$Message.success('提交成功!');
+                            that.$router.go(-1)
                         })
                         .catch(function (error) {
                             console.log(error);
+                            that.$Message.error('提交失败!'+ error);
                         });
-                        this.$Message.success('Success!');
-                        this.$router.go(-1)
                     } else {
-                        this.$Message.error('Fail!');
+                        this.$Message.error('信息无效');
                     }
                 })
             },
@@ -133,8 +134,8 @@
                     console.log(response);
                     that.is_real_people = response.data.data.is_real_people;
 
-                if(!that.is_right_people){
-                    this.$Message.warning('您已经完成了激活，再次提交将覆盖您的信息，请确认是否继续');
+                if(that.is_real_people){
+                    that.$Message.warning('您已经完成了激活，再次提交将覆盖您的信息，请确认是否继续');
                     return false
             }
                 })
