@@ -78,7 +78,7 @@
                 <Cell title="Display right content" extra="details" /> -->
                 <Cell title="直播" extra="进入直播" :to="'/live?id='+liveId" />
                 <Cell title="资料下载" extra="浏览资料" :to="'/resource?id='+id" />
-                <Cell title="我要投资" to="/components/button" />
+                <Cell title="我要投资" @click.native="checkIn()"/>
                 <Cell title="我要推荐" to="/components/button" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
                 <Cell title="Disabled" disabled />
@@ -129,7 +129,7 @@
                     this.$router.push({path: '/test'});
                     return false
                 }
-                util.ajax.put('/api/itemCheck/'+ that.id + '/' + that.uid)
+                this.postRequest('/api/project_checkin/'+ that.id, {})
                             .then(function (response) {
                             console.log(response);
                         })

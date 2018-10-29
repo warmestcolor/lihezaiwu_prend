@@ -103,6 +103,18 @@ const routers = [{
         title: '文章'
     },
     component: (resolve) => require(['./views/article.vue'], resolve)
+},{
+    path: '/about',
+    meta: {
+        title: '关于平台'
+    },
+    component: (resolve) => require(['./views/about.vue'], resolve)
+},{
+    path: '/contact',
+    meta: {
+        title: '联系我们'
+    },
+    component: (resolve) => require(['./views/contact.vue'], resolve)
 }
 ];
 export default routers;

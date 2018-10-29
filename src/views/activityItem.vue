@@ -116,7 +116,7 @@
                     this.$router.push({path: '/test'});
                     return false
                 }
-                util.ajax.put('/api/itemCheck/'+ that.id + '/' + that.uid)
+                util.ajax.put('/api/activitie_checkin/'+ that.id)
                             .then(function (response) {
                             console.log(response);
                         })

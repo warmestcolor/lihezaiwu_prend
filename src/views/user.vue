@@ -135,7 +135,7 @@
             console.log("vuex数据" + this.$store.state.uid)
             this.id = this.$store.state.uid
             var that = this
-            this.getRequest('/api/wechat/user/'+that.id)
+            this.getRequest('/api/me')
                 .then(function (response) {
                     console.log(response);
                     that.url = response.data.data.headIconUrl;
