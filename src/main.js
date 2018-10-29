@@ -10,6 +10,7 @@ import {getRequest} from './libs/util'
 import {postRequest} from './libs/util'
 import {deleteRequest} from './libs/util'
 import {putRequest} from './libs/util'
+import {getCookie, setCookie, delCookie} from './libs/cookie';
 import App from './app.vue';
 import Qs from 'qs'   //引入方式
 Vue.prototype.$qs = Qs 
