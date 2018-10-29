@@ -40,11 +40,13 @@ axios.interceptors.request.use(config=> {
     } else if (err.response.status == 403) {
     //   Message.error({message: '权限不足,请联系管理员!'});
         console.log(403)
-    }else {
+    } else if (err.response.status == 401) {
     //   Message.error({message: '未知错误!'});
       console.log("未登录"+err.response.status)
       console.log("当前地址"+ window.location.href)
       window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+    } else{
+      console.log("未知错误"+err.response.status)
     }
     return Promise.resolve(err);
   })
