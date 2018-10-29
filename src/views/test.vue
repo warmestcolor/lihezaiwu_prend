@@ -279,11 +279,11 @@
                     content: '力合载物谨遵基金业协会《私募投资基金募集行为管理办法》之规定，只向特定的合格投资者宣传推介相关私募投资基金产品'
                 });
                 if(!that.is_real_people){
-                    this.$Message.warning('您还未激活，请激活您的账户');
-                    this.$router.push({path: '/regist'});
+                    that.$Message.warning('您还未激活，请激活您的账户');
+                    that.$router.push({path: '/regist'});
                     return false}
                 if(!that.is_right_people){
-                    this.$Message.warning('您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续');
+                    that.$Message.warning('您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续');
                     return false
             }
                 })

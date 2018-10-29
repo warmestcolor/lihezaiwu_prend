@@ -80,7 +80,7 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            util.ajax.get('/api/projects/'+this.$route.query.id+'/resources')
+            this.getRequest('/api/projects/'+this.$route.query.id+'/resources')
                 .then(function (response) {
                     console.log(response);
                     that.resourceList = response.data.data
