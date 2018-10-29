@@ -36,40 +36,40 @@
                 value1: '1',
                 columns1: [
                     {
-                        title: 'Name',
+                        title: '用户',
                         key: 'name'
                     },
                     {
-                        title: 'Age',
-                        key: 'age'
+                        title: '项目',
+                        key: 'project'
                     },
                     {
-                        title: 'Address',
-                        key: 'address'
+                        title: '时间',
+                        key: 'date'
                     }
                 ],
                 data1: [
                     {
                         name: 'John Brown',
-                        age: 18,
+                        project: '基金1',
                         address: 'New York No. 1 Lake Park',
                         date: '2016-10-03'
                     },
                     {
                         name: 'Jim Green',
-                        age: 24,
+                        project: '基金2',
                         address: 'London No. 1 Lake Park',
                         date: '2016-10-01'
                     },
                     {
                         name: 'Joe Black',
-                        age: 30,
+                        project: '基金2',
                         address: 'Sydney No. 1 Lake Park',
                         date: '2016-10-02'
                     },
                     {
                         name: 'Jon Snow',
-                        age: 26,
+                        project: '基金1',
                         address: 'Ottawa No. 2 Lake Park',
                         date: '2016-10-04'
                     }
