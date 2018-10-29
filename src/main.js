@@ -34,89 +34,89 @@ const RouterConfig = {
 };
 const router = new VueRouter(RouterConfig);
 
-router.beforeEach((to, from, next) => {
-    // iView.LoadingBar.start();
-    // Util.title(to.meta.title);
-    // console.log("跳转到" + to.fullPath);
-    // console.log("uid" + to.query.uid);
-    // console.log(store.state.uid);
-    // if(sessionStorage.getItem("isLogin")==undefined && to.query.uid != undefined){
-    //     // 重定向进入项目带uid
-    //     console.log("已登录")
-    //     console.log("跳转到" + to.fullPath)
-    //     store.commit('ADD_LOGIN_USER', to.query.uid) 
-    //     console.log("当前uid " + store.state.uid)
-    //     var url = sessionStorage.getItem("url")
-    //     router.push({path: url});
-    //     return false
-    //   }
-    // if(sessionStorage.getItem("isLogin")==undefined){
-    //     // 第一次进入项目
-    //     console.log("未登录")
-    //     console.log("跳转到" + to.path)
-    //     sessionStorage.setItem("url", to.fullPath);
-    //     window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1326cea38393a6d3&redirect_uri=http%3A%2F%2Fwbr.nat300.top%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-    //     return false
-    //   }
-    // if(sessionStorage.getItem("isLogin")){
-    //     // 用户使用后退返回到授权页，则默认回到首页
-    //     next()
-    //   }
-    next();
-});
-
 // router.beforeEach((to, from, next) => {
-//     store.commit('setuid', getCookie("uid"))
-//     iView.LoadingBar.start();
-//     Util.title(to.meta.title);
-//     console.log("跳转到" + to.fullPath);
-//     if(to.path.indexOf('/api/') >= 0){
-//       next();
-//       return false;
-//     }
-//     console.log("uid" + to.query.uid);
-//     console.log(store.state.uid);
-//     if(getCookie("isLogin")) {
-//       next();
-//       return false;
-//     }
-//     if(getCookie("prepareLogin")){
-//       delCookie("prepareLogin");
-//       // 底下应该是登录操作
-//       if(to.query.uid){
-//         // from wechat
-//         setCookie("isLogin", true);
-//         setCookie("uid", to.query.uid);
-//         var url = getCookie("url")
-//         router.push({path: url});
-//       } else {
-//         var url = getCookie("url")
-//         router.push({path: url});
-//       }
-//       return false
-//     } else {
-//       setCookie("prepareLogin", "true");
-//       setCookie("url", to.fullPath);
-//       window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-//       return false
-//     }
-
+//     // iView.LoadingBar.start();
+//     // Util.title(to.meta.title);
+//     // console.log("跳转到" + to.fullPath);
+//     // console.log("uid" + to.query.uid);
+//     // console.log(store.state.uid);
+//     // if(sessionStorage.getItem("isLogin")==undefined && to.query.uid != undefined){
+//     //     // 重定向进入项目带uid
+//     //     console.log("已登录")
+//     //     console.log("跳转到" + to.fullPath)
+//     //     store.commit('ADD_LOGIN_USER', to.query.uid) 
+//     //     console.log("当前uid " + store.state.uid)
+//     //     var url = sessionStorage.getItem("url")
+//     //     router.push({path: url});
+//     //     return false
+//     //   }
+//     // if(sessionStorage.getItem("isLogin")==undefined){
+//     //     // 第一次进入项目
+//     //     console.log("未登录")
+//     //     console.log("跳转到" + to.path)
+//     //     sessionStorage.setItem("url", to.fullPath);
+//     //     window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1326cea38393a6d3&redirect_uri=http%3A%2F%2Fwbr.nat300.top%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+//     //     return false
+//     //   }
 //     // if(sessionStorage.getItem("isLogin")){
-//     //   //
-//     //   next();
-//     //   return false;
-//     // } else {
-//     //   // 第一次进入项目
-//     //   console.log("未登录")
-//     //   console.log("跳转到" + to.path)
-//     //   sessionStorage.setItem("url", to.fullPath);
-//     //   sessionStorage.setItem("isLogin", true);
-//     //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-//     //   window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
-//     //   return false
-//     // }
-//     // next();
+//     //     // 用户使用后退返回到授权页，则默认回到首页
+//     //     next()
+//     //   }
+//     next();
 // });
+
+router.beforeEach((to, from, next) => {
+    store.commit('setuid', getCookie("uid"))
+    // iView.LoadingBar.start();
+    Util.title(to.meta.title);
+    console.log("跳转到" + to.fullPath);
+    if(to.path.indexOf('/api/') >= 0){
+      next();
+      return false;
+    }
+    console.log("uid" + to.query.uid);
+    console.log(store.state.uid);
+    if(getCookie("isLogin")) {
+      next();
+      return false;
+    }
+    if(getCookie("prepareLogin")){
+      delCookie("prepareLogin");
+      // 底下应该是登录操作
+      if(to.query.uid){
+        // from wechat
+        setCookie("isLogin", true);
+        setCookie("uid", to.query.uid);
+        var url = getCookie("url")
+        router.push({path: url});
+      } else {
+        var url = getCookie("url")
+        router.push({path: url});
+      }
+      return false
+    } else {
+      setCookie("prepareLogin", "true");
+      setCookie("url", to.fullPath);
+      window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+      return false
+    }
+
+    // if(sessionStorage.getItem("isLogin")){
+    //   //
+    //   next();
+    //   return false;
+    // } else {
+    //   // 第一次进入项目
+    //   console.log("未登录")
+    //   console.log("跳转到" + to.path)
+    //   sessionStorage.setItem("url", to.fullPath);
+    //   sessionStorage.setItem("isLogin", true);
+    //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=http%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+    //   window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
+    //   return false
+    // }
+    // next();
+});
 
 router.afterEach(() => {
     iView.LoadingBar.finish();
