@@ -111,7 +111,9 @@
                 resourcePrice: null,
                 openId: null,
                 liveId: null,
-                pic: null
+                pic: null,
+                is_real_people,
+                is_right_people,
             }
         },
         methods: {
@@ -119,12 +121,12 @@
                 var that = this
                 console.log(that.id)
                 console.log(that.uid)
-                if(that.userStatus != "ACTIVED"){
+                if(!that.is_real_people){
                     this.$Message.warning('您还未激活，请激活您的账户');
                     this.$router.push({path: '/regist'});
                     return false
                 }
-                if(that.type=="HIGH"&&that.touzi==false){
+                if(that.type=="high"&&!that.is_right_people){
                     this.$Message.warning('您还不是合格投资人，请完成合格投资人认证');
                     this.$router.push({path: '/test'});
                     return false
@@ -188,6 +190,15 @@
                     that.pic = response.data.data.image_url
                     that.resourceId = response.data.data.resourceId
                     that.liveId = response.data.data.live.id
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            this.getRequest('/api/me')
+                .then(function (response) {
+                    console.log(response);
+                    that.is_real_people = response.data.data.is_real_people
+                    that.is_right_people = response.data.data.is_right_people
                 })
                 .catch(function (error) {
                     console.log(error);

@@ -65,7 +65,7 @@
             <div style="width: 100%; text-align: center">
                 <Avatar :src="url" style="width: 80px; height: 80px;border-radius: 40px; margin-top: 50px" vertical-align="middle" justify="center" align="middle" icon="ios-person" size=large />
             </div>
-            <div style="font-size: 18px; text-align: center">用户名</div>
+            <div style="font-size: 18px; text-align: center">{{name}}</div>
         </Row>
                <div style="padding: 10px">
         <Card title="选项" icon="ios-options" :padding="0">
@@ -73,8 +73,7 @@
                 <!-- <Cell title="Only show titles" />
                 <Cell title="Display label content" label="label content" />
                 <Cell title="Display right content" extra="details" /> -->
-                <Cell title="激活" extra="details" to="/regist" />
-                <Cell title="更新用户信息" extra="details" to="/update" />
+                <Cell title="激活/更新用户信息" extra="details" to="/regist" />
                 <Cell title="合格投资人认证" extra="details" to="/test" />
                 <Cell title="我的推荐" extra="details" to="/recommend" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
@@ -89,21 +88,6 @@
             </CellGroup>
         </Card>
     </div>
-        <Row span="24" class="title">
-            <Col span="22">用户</Col>
-            <!-- <a href="/list" span="2">
-                <Col span="2">更多</Col>
-            </a> -->
-        </Row>
-        <Card @click.native="goRegist" style="padding: 4px 12px">
-            激活
-        </Card>
-        <Card @click.native="goRegist" style="padding: 4px 12px">
-            更新用户信息
-        </Card>
-        <Card @click.native="goTest" style="padding: 4px 12px">
-            投资人认证
-        </Card>
     </div>
 </template>
 <script>
@@ -138,8 +122,8 @@
             this.getRequest('/api/me')
                 .then(function (response) {
                     console.log(response);
-                    that.url = response.data.data.headIconUrl;
-                    that.name = response.data.data.nickname;
+                    that.url = response.data.data.avatar;
+                    that.name = response.data.data.username;
                     that.status = response.data.data.memberStatus;
                 })
                 .catch(function (error) {

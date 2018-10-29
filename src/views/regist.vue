@@ -94,17 +94,17 @@
                     if (valid) {
                         // function trnsfer(obj) {obj.toString()}
                         const data = {
-                            phone: this.formValidate.phone,
-                            idcard: this.formValidate.idcard,
-                            mail: this.formValidate.mail,
-                            realname: this.formValidate.realname
+                            telephone: this.formValidate.phone,
+                            id_card: this.formValidate.idcard,
+                            email: this.formValidate.mail,
+                            real_name: this.formValidate.realname
                         }
                         console.log('===========')
                         console.log(this.formValidate)
                         console.log(name)
                         console.log(valid)
                         console.log(data)
-                        util.ajax.put('/api/wechat/user/'+this.$store.state.uid, this.$qs.stringify(data))
+                        this.postRequest('/api/user/activitie', this.$qs.stringify(data))
                         .then(function (response) {
                             console.log(response);
                         })

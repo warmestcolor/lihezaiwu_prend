@@ -99,6 +99,8 @@
                 start_time: null,
                 end_time: null,
                 image_url: null,
+                is_real_people,
+                is_right_people
             }
         },
         methods: {
@@ -106,17 +108,12 @@
                 var that = this
                 console.log(that.id)
                 console.log(that.uid)
-                if(that.userStatus != "ACTIVED"){
+                if(!is_real_people){
                     this.$Message.warning('您还未激活，请激活您的账户');
                     this.$router.push({path: '/regist'});
                     return false
                 }
-                if(that.type=="HIGH"&&that.touzi==false){
-                    this.$Message.warning('您还不是合格投资人，请完成合格投资人认证');
-                    this.$router.push({path: '/test'});
-                    return false
-                }
-                util.ajax.put('/api/activitie_checkin/'+ that.id)
+                this.postRequest('/api/activitie_checkin/'+ that.id, {})
                             .then(function (response) {
                             console.log(response);
                         })
@@ -125,7 +122,7 @@
                         });
                 this.$Modal.success({
                     title: '报名成功',
-                    content: '随后我们将会与您取得联系， 感谢您的关注'
+                    content: '随后我们将会与您取得联系，感谢您的关注'
                 });
             }
         },
@@ -138,8 +135,6 @@
                     console.log(response);
                     that.name = response.data.data.name
                     that.describe = response.data.data.describle
-                    that.type = response.data.data.itemType
-                    that.resourceId = response.data.data.resourceId
                     that.start_time = response.data.data.start_time.slice(0,10)
                     that.end_time = response.data.data.end_time.slice(0,10)
                     that.image_url = response.data.data.image_url
@@ -147,16 +142,11 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-             this.getRequest('/api/wechat/user/'+ this.$store.state.uid)
+            this.getRequest('/api/me')
                 .then(function (response) {
                     console.log(response);
-                    that.uid = response.data.data.uid
-                    that.userStatus = response.data.data.memberStatus;
-                    that.openId = response.data.data.userThirdInfos[0].openId
-                    console.log('openid'+that.openId)
-                    if(response.data.data.touzi != undefined){
-                        that.touzi = response.data.data.touzi
-                    }
+                    that.is_real_people = response.data.data.is_real_people
+                    that.is_right_people = response.data.data.is_right_people
                 })
                 .catch(function (error) {
                     console.log(error);
