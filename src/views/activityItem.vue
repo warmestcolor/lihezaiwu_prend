@@ -75,7 +75,7 @@
        <div style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
-                <Cell title="我要报名" extra="details" to="/components/button" />
+                <Cell title="我要报名" @click.native="checkIn()"/>
             </CellGroup>
         </Card>
     </div>
@@ -99,8 +99,8 @@
                 start_time: null,
                 end_time: null,
                 image_url: null,
-                is_real_people,
-                is_right_people
+                is_real_people: false,
+                is_right_people: false,
             }
         },
         methods: {
@@ -108,7 +108,7 @@
                 var that = this
                 console.log(that.id)
                 console.log(that.uid)
-                if(!is_real_people){
+                if(!that.is_real_people){
                     this.$Message.warning('您还未激活，请激活您的账户');
                     this.$router.push({path: '/regist'});
                     return false

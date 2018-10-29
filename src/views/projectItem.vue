@@ -112,8 +112,8 @@
                 openId: null,
                 liveId: null,
                 pic: null,
-                is_real_people,
-                is_right_people,
+                is_real_people: false,
+                is_right_people: false,
             }
         },
         methods: {
