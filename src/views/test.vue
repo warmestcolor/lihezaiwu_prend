@@ -25,10 +25,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[0]" size=large vertical >
-        <Radio label=3>A 18-30</Radio>
-        <Radio label=5>B 31-50</Radio>
-        <Radio label=2>C 51-65</Radio>
-        <Radio label=1>D 高于65</Radio>
+        <Radio label="A3">A 18-30</Radio>
+        <Radio label="B5">B 31-50</Radio>
+        <Radio label="C2">C 51-65</Radio>
+        <Radio label="D1">D 高于65</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title">
@@ -36,10 +36,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[1]" size=large vertical>
-        <Radio label=2>A 高中及以下</Radio>
-        <Radio label=3>B 中专或大专</Radio>
-        <Radio label=4>C 本科</Radio>
-        <Radio label=5>D 硕士及以上</Radio>
+        <Radio label="A2">A 高中及以下</Radio>
+        <Radio label="B3">B 中专或大专</Radio>
+        <Radio label="C4">C 本科</Radio>
+        <Radio label="D5">D 硕士及以上</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title">
@@ -47,10 +47,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[2]" size=large vertical>
-        <Radio label=1>A 无固定职业</Radio>
-        <Radio label=3>B 专业技术人员</Radio>
-        <Radio label=4>C 一般企事业单位员工</Radio>
-        <Radio label=5>D 金融行业一般从业人员</Radio>
+        <Radio label="A1">A 无固定职业</Radio>
+        <Radio label="B3">B 专业技术人员</Radio>
+        <Radio label="C4">C 一般企事业单位员工</Radio>
+        <Radio label="D5">D 金融行业一般从业人员</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title">
@@ -58,11 +58,11 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[3]" size=large vertical>
-        <Radio label=1>A 50万元以下</Radio>
-        <Radio label=2>B 50-100万元</Radio>
-        <Radio label=3>C 100-500万元</Radio>
-        <Radio label=4>D 500-1000万元</Radio>
-        <Radio label=5>E 1000万元以上</Radio>
+        <Radio label="A1">A 50万元以下</Radio>
+        <Radio label="B2">B 50-100万元</Radio>
+        <Radio label="C3">C 100-500万元</Radio>
+        <Radio label="D4">D 500-1000万元</Radio>
+        <Radio label="E5">E 1000万元以上</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title">
@@ -70,10 +70,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[4]" size=large vertical>
-        <Radio label=0>A 不超过100万元人民币</Radio>
-        <Radio label=2>B 100万-300万元（不含）人民币</Radio>
-        <Radio label=4>C 300万-1000万元（不含）人民币</Radio>
-        <Radio label=5>D 1000万元人民币以上</Radio>
+        <Radio label="A0">A 不超过100万元人民币</Radio>
+        <Radio label="B2">B 100万-300万元（不含）人民币</Radio>
+        <Radio label="C4">C 300万-1000万元（不含）人民币</Radio>
+        <Radio label="D5">D 1000万元人民币以上</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title">
@@ -81,11 +81,11 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[5]" size=large vertical>
-        <Radio label=1>A 70%以上</Radio>
-        <Radio label=2>B 50%-70%</Radio>
-        <Radio label=3>C 30%－50%</Radio>
-        <Radio label=4>D 10%－30%</Radio>
-        <Radio label=5>E 10%以下</Radio>
+        <Radio label="A1">A 70%以上</Radio>
+        <Radio label="B2">B 50%-70%</Radio>
+        <Radio label="C3">C 30%－50%</Radio>
+        <Radio label="D4">D 10%－30%</Radio>
+        <Radio label="E5">E 10%以下</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -93,10 +93,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[6]" size=large vertical>
-        <Radio label=3>A 从事金融或财会等与投资相关的工作超过两年</Radio>
-        <Radio label=4>B 已取得与金融投资相关专业学士以上学位</Radio>
-        <Radio label=5>C 取得证券（基金）从业资格或相关财会证书等</Radio>
-        <Radio label=0>D 我不符合以上任何一项描述</Radio>
+        <Radio label="A3">A 从事金融或财会等与投资相关的工作超过两年</Radio>
+        <Radio label="B4">B 已取得与金融投资相关专业学士以上学位</Radio>
+        <Radio label="C5">C 取得证券（基金）从业资格或相关财会证书等</Radio>
+        <Radio label="D0">D 我不符合以上任何一项描述</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -104,10 +104,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[7]" size=large vertical>
-        <Radio label=1>A 除银行储蓄外，基本无其他投资</Radio>
-        <Radio label=2>B 我购买过理财产品，但还需要指导</Radio>
-        <Radio label=4>C 我倾向于自己做出投资决策</Radio>
-        <Radio label=5>D 我是一位非常有经验的投资者</Radio>
+        <Radio label="A1">A 除银行储蓄外，基本无其他投资</Radio>
+        <Radio label="B2">B 我购买过理财产品，但还需要指导</Radio>
+        <Radio label="C4">C 我倾向于自己做出投资决策</Radio>
+        <Radio label="D5">D 我是一位非常有经验的投资者</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -115,11 +115,11 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[8]" size=large vertical>
-        <Radio label=1>A 没有经验</Radio>
-        <Radio label=2>B 少于2年</Radio>
-        <Radio label=3>C 2至5年</Radio>
-        <Radio label=5>D 5至10年</Radio>
-        <Radio label=6>E 10年以上</Radio>
+        <Radio label="A1">A 没有经验</Radio>
+        <Radio label="B2">B 少于2年</Radio>
+        <Radio label="C3">C 2至5年</Radio>
+        <Radio label="D4">D 5至10年</Radio>
+        <Radio label="E6">E 10年以上</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -127,10 +127,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[9]" size=large vertical>
-        <Radio label=2>A 短期——0到1年</Radio>
-        <Radio label=3>B 中期——1到3年</Radio>
-        <Radio label=4>C 长期——3到5年</Radio>
-        <Radio label=6>D 5年以上</Radio>
+        <Radio label="A2">A 短期——0到1年</Radio>
+        <Radio label="B3">B 中期——1到3年</Radio>
+        <Radio label="C4">C 长期——3到5年</Radio>
+        <Radio label="D6">D 5年以上</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -138,10 +138,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[10]" size=large vertical>
-        <Radio label=3>A 资产保值</Radio>
-        <Radio label=5>B 资产稳健增长</Radio>
-        <Radio label=7>C 资产迅速增长</Radio>
-        <Radio label=0>D 风险偏好</Radio>
+        <Radio label="A3">A 资产保值</Radio>
+        <Radio label="B5">B 资产稳健增长</Radio>
+        <Radio label="C7">C 资产迅速增长</Radio>
+        <Radio label="D0">D 风险偏好</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -149,10 +149,10 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[11]" size=large vertical>
-        <Radio label=2>A 不希望本金损失，希望获得稳定回报</Radio>
-        <Radio label=3>B 不希望本金损失，愿意承担一定幅度的收益波动</Radio>
-        <Radio label=4>C 愿意为较高收益承担有限本金损失</Radio>
-        <Radio label=6>D 愿意为高回报承担较大本金损失</Radio>
+        <Radio label="A2">A 不希望本金损失，希望获得稳定回报</Radio>
+        <Radio label="B3">B 不希望本金损失，愿意承担一定幅度的收益波动</Radio>
+        <Radio label="C4">C 愿意为较高收益承担有限本金损失</Radio>
+        <Radio label="D6">D 愿意为高回报承担较大本金损失</Radio>
     </RadioGroup>
     </div>
     <Row span="24" class="title" >
@@ -160,14 +160,14 @@
     </Row>
     <div style="padding-left: 20px">
     <RadioGroup v-model="score[12]" size=large vertical>
-        <Radio label=1>A 10%以内</Radio>
-        <Radio label=2>B 10%-30%</Radio>
-        <Radio label=3>C 30%-50%</Radio>
-        <Radio label=6>D 超过50%</Radio>
+        <Radio label="A1">A 10%以内</Radio>
+        <Radio label="B2">B 10%-30%</Radio>
+        <Radio label="C3">C 30%-50%</Radio>
+        <Radio label="D6">D 超过50%</Radio>
     </RadioGroup>
     </div>
         <div style="padding: 10px 20px 10px 20px">
-        <Button type="info" long>提交</Button>
+        <Button @click="handleSubmit()" type="info" long>提交</Button>
         </div>
 </div>
 </template>
@@ -183,21 +183,35 @@
                 is_real_people: false,
                 is_right_people: false,
                 score: [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                ]
-
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                    'N0',
+                ],
+                option: [
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                    'N',
+                ],
             }
         },
         methods: {
@@ -207,8 +221,12 @@
                 var t = ''
                 var type = ""
                 for(var i=0,len=that.score.length; i<len; i++){
-                    console.log("这道题的得分是"+that.score[i]+ isNaN(that.score[i]))
-                    s += parseInt(that.score[i])
+                    var answer = that.score[i]
+                    var now = answer.split('')
+                    that.option[i] = now[0]
+                    console.log("这道题的选项是是"+now[0]+ isNaN(now[1]))
+                    console.log("这道题的得分是"+now[1]+ isNaN(now[1]))
+                    s += parseInt(now[1])
                 }
                 if (s>=0 && s<=14)
                     {
@@ -242,6 +260,19 @@
                     console.log(s)
                     console.log(t)
                     const data = {
+                        answer1: that.option[0],
+                        answer2: that.option[1],
+                        answer3: that.option[2],
+                        answer4: that.option[3],
+                        answer5: that.option[4],
+                        answer6: that.option[5],
+                        answer7: that.option[6],
+                        answer8: that.option[7],
+                        answer9: that.option[8],
+                        answer10: that.option[9],
+                        answer11: that.option[10],
+                        answer12: that.option[11],
+                        answer13: that.option[12],
                             score: s,
                         }
                     this.postRequest('/api/users/apply', this.$qs.stringify(data))
