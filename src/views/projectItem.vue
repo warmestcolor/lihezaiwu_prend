@@ -189,7 +189,7 @@
         var that = this
         this.id = this.$route.query.id
         if(this.$route.query.recommend){
-            that.recommendid = this.$route.query.id
+            that.recommendid = this.$route.query.recommend
             that.postRequest('/api/projects/'+that.id+'/recommend/'+that.recommendid, null)                
                 .then(function (response) {
                     that.$Modal.info({
