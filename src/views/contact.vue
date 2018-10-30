@@ -62,6 +62,7 @@
 <template>
     <div class="index">
         <div style="font-size: 28px; padding: 10px 24px 10px 24px">联系我们</div>
+        <div style="padding: 10px 20px 10px 20px">
          <Card>
             <p slot="title">联系地址</p>
             <p href="#" slot="extra">
@@ -69,6 +70,8 @@
             </p>
             <p>深圳市南山区高新技术产业园清华信息港综合楼504</p>
         </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
          <Card>
             <p slot="title">电子邮箱</p>
             <p href="#" slot="extra">
@@ -76,6 +79,8 @@
             </p>
             <p>tryago@163.com</p>
         </Card>
+        </div>
+        <div style="padding: 10px 20px 10px 20px">
          <Card>
             <p slot="title">联系电话</p>
             <p href="#" slot="extra">
@@ -83,6 +88,7 @@
             </p>
             <p>0755-86726401</p>
         </Card>
+        </div>
     </div>
 </template>
 <script>
