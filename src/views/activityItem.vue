@@ -113,7 +113,7 @@
                     this.$router.push({path: '/regist'});
                     return false
                 }
-                this.postRequest('/api/activitie_checkin/'+ that.id, {})
+                this.postRequest('/api/activitie_checkin/'+ that.id, null)
                             .then(function (response) {
                             console.log(response);
                         })

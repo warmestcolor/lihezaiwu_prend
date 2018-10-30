@@ -79,7 +79,7 @@
                 <Cell title="直播" extra="进入直播" :to="'/live?id='+liveId" />
                 <Cell title="资料下载" extra="浏览资料" :to="'/resource?id='+id" />
                 <Cell title="我要投资" @click.native="checkIn()"/>
-                <Cell title="我要推荐" to="/components/button" />
+                <Cell title="我要推荐" @click.native="recommend()" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
                 <Cell title="Disabled" disabled />
                 <Cell title="Selected" selected />
@@ -114,6 +114,7 @@
                 pic: null,
                 is_real_people: false,
                 is_right_people: false,
+                recommendid: null,
             }
         },
         methods: {
@@ -131,7 +132,7 @@
                     this.$router.push({path: '/test'});
                     return false
                 }
-                this.postRequest('/api/project_checkin/'+ that.id, {})
+                this.postRequest('/api/project_checkin/'+ that.id, null)
                             .then(function (response) {
                             console.log(response);
                         })
@@ -175,35 +176,54 @@
             ,
             goResource(id) {
                 this.$router.push({path: '/resource'+'?id='+id});
+            },
+            recommend() {
+                this.$Modal.success({
+                            title: '生成我的专属推荐链接',
+                            content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/project?id='+this.id+'&recommend='+this.uid+'\n（长按复制）'
+                });
             }
         },
     created(){
         console.log(this.$route.query.id)
         var that = this
         this.id = this.$route.query.id
-            this.getRequest('/api/projects/'+this.$route.query.id)
+        if(this.$route.query.recommend){
+            that.recommendid = this.$route.query.id
+            that.postRequest('/api/projects/'+that.id+'/recommend/'+that.recommendid, null)                
                 .then(function (response) {
-                    console.log(response);
-                    that.name = response.data.data.name
-                    that.describe = response.data.data.describe
-                    that.type = response.data.data.type
-                    that.pic = response.data.data.image_url
-                    that.resourceId = response.data.data.resourceId
-                    that.liveId = response.data.data.live.id
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            this.getRequest('/api/me')
-                .then(function (response) {
-                    console.log(response);
-                    that.is_real_people = response.data.data.is_real_people
-                    that.is_right_people = response.data.data.is_right_people
+                    that.$Modal.info({
+                        title: '项目推荐',
+                        content: '这是用户ID'+that.recommendid+'向您推荐的项目，快来看看吧！'
+                });  
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
-            
+        this.getRequest('/api/projects/'+this.$route.query.id)
+            .then(function (response) {
+                console.log(response);
+                that.name = response.data.data.name
+                that.describe = response.data.data.describe
+                that.type = response.data.data.type
+                that.pic = response.data.data.image_url
+                that.resourceId = response.data.data.resourceId
+                that.liveId = response.data.data.live.id
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        this.getRequest('/api/me')
+            .then(function (response) {
+                console.log(response);
+                that.uid = response.data.data.id
+                that.is_real_people = response.data.data.is_real_people
+                that.is_right_people = response.data.data.is_right_people
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }     
     }
 </script>
