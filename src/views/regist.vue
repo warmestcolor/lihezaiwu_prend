@@ -134,14 +134,16 @@
                 .then(function (response) {
                     console.log(response);
                     that.is_real_people = response.data.data.is_real_people;
+                    if(that.is_real_people){
+                        that.$Modal.warning({
+                        title: '提示',
+                        content: '您已经完成激活，再次提交将覆盖您的信息，请确认是否继续'
+                        })
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            if(that.is_real_people){
-                    that.$Message.warning('您已经完成了激活，再次提交将覆盖您的信息，请确认是否继续');
-                    return false
-            }
         }
     }
 </script>
