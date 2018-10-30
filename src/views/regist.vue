@@ -106,7 +106,8 @@
                         console.log(name)
                         console.log(valid)
                         console.log(data)
-                        this.postRequest('/api/users/active', this.$qs.stringify(data))
+                        // this.$qs.stringify(data)
+                        this.postRequest('/api/users/active', data)
                         .then(function (response) {
                             console.log(response);
                             that.$Message.success('提交成功!');

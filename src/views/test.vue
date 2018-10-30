@@ -275,7 +275,7 @@
                         answer13: that.option[12],
                             score: s,
                         }
-                    this.postRequest('/api/users/apply', this.$qs.stringify(data))
+                    this.postRequest('/api/users/apply', data)
                             .then(function (response) {
                             console.log(response);
                             console.log(s)

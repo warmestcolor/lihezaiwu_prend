@@ -192,6 +192,7 @@
             that.recommendid = this.$route.query.recommend
             that.postRequest('/api/projects/'+that.id+'/recommend/'+that.recommendid, null)                
                 .then(function (response) {
+                    console.log(response);
                     that.$Modal.info({
                         title: '项目推荐',
                         content: '这是用户ID'+that.recommendid+'向您推荐的项目，快来看看吧！'
@@ -203,7 +204,7 @@
         }
         this.getRequest('/api/projects/'+this.$route.query.id)
             .then(function (response) {
-                console.log(response);
+                console.log(response); 
                 that.name = response.data.data.name
                 that.describe = response.data.data.describe
                 that.type = response.data.data.type
