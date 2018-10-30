@@ -310,12 +310,13 @@
                     that.$Modal.warning({
                     title: '提示',
                     content: '您已经完成了合格投资人认证，再次答题将覆盖您的答题记录，请确认是否继续'
-                });
-                }
-                that.$Modal.warning({
+                    })
+                }else{                
+                    that.$Modal.warning({
                     title: '用户须知',
                     content: '力合载物谨遵基金业协会《私募投资基金募集行为管理办法》之规定，只向特定的合格投资者宣传推介相关私募投资基金产品'
-                });
+                    })
+                }
                 })
                 .catch(function (error) {
                     console.log(error);
