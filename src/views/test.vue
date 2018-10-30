@@ -301,6 +301,7 @@
                 .then(function (response) {
                     console.log(response);
                     that.is_real_people = response.data.data.is_real_people;
+                    that.is_right_people = response.data.data.is_right_people;
                 if(!that.is_real_people){
                     that.$Message.warning('您还未激活，请激活您的账户');
                     that.$router.push({path: '/regist'});
