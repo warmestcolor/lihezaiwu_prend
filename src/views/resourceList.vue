@@ -21,14 +21,14 @@
             资源列表
             <div slot="content">
             <div v-for="(item, index) in resourceList" :key="index" style="padding-top: 10px">
-            <Card v-if="item.can_download" @click.native="goArticle(item.id)">
+            <Card v-if="item.can_download" @click.native="goLink(item)">
             <p slot="title">{{item.name}}</p>
             <p href="#" slot="extra">
             下载资源
             </p>
             <p>价格：{{item.price}} ¥ 已购买</p>
         </Card>
-        <Card v-else @click.native="goArticle(item.id)">
+        <Card v-else @click.native="goBuy(item)">
             <p slot="title">{{item.name}}</p>
             <p href="#" slot="extra">
             购买资源
@@ -73,8 +73,17 @@
                     }, 2000);
                 });
             },
-            goLink(itemId) {
-                this.$router.push({path: '/article'+'?id='+itemId});
+            goLink(item) {
+                this.$Modal.success({
+                            title: '获取成功',
+                            content: '请将文件链接拷贝到微信外的浏览器进行下载：\n'+ item.url
+                })
+            },
+            goBuy(item) {
+                this.$Modal.warning({
+                            title: '暂未开放购买',
+                            content: '请将文件链接拷贝到微信外的浏览器进行下载：\n'+ item.url
+                })
             }
         },
         created(){
