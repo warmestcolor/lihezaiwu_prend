@@ -18,7 +18,7 @@
 <template>
     <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
-            线下活动
+            创业分享
             <div slot="content">
             <div style="padding-top: 10px" v-for="(item, index) in activityList" :key="index">
         <Card @click.native="goActivity(item.id)">
