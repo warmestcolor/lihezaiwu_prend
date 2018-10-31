@@ -149,9 +149,9 @@
                 if(id != null&&id != undefined){
                 window.location.href = "https://ghlive.cn/"+id
                 // this.$router.push({path: '/item'+'?id='+itemId});    
-                }
-                this.$Message.warning('该项目暂无直播');
-                    return false
+                }else{                
+                    that.$Message.warning('该项目暂无直播');
+                    return false}
             },
             getFile() {
                 var that = this
