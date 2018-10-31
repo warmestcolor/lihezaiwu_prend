@@ -106,7 +106,7 @@
             <div style="text-align:center">
             <img :src= "item.image_url" style="width: 100%">
             </div>
-            <p>{{item.describe}}</p>
+            <p>{{item.describle}}</p>
         </Card>
         </div>
         <div style="padding: 10px 20px 10px 20px">
@@ -134,7 +134,7 @@
         </div>
         </TabPane>
         
-        <TabPane label="线下活动" name="name3" >
+        <TabPane label="创业分享" name="name3" >
         <div style="padding: 10px 20px 10px 20px" v-for="(item, index) in activityList" :key="index">
         <Card @click.native="goActivity(item.id)">
             <p slot="title">{{item.name}}</p>
@@ -161,16 +161,6 @@
             {{item.inserted_at.slice(0,10)}}
             </p>
             <p>文章</p>
-        </Card>
-        </div>
-        <div style="padding: 10px 20px 10px 20px">
-        <Card>
-            <p slot="title">我公司XXX活动圆满结束</p>
-            <p href="#" slot="extra">
-            <!-- <Icon type="ios-loop-strong"></Icon> -->
-            
-            </p>
-            <p>新闻</p>
         </Card>
         </div>
         <div style="padding: 10px 20px 10px 20px">
