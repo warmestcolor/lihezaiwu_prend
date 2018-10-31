@@ -58,12 +58,21 @@
         color: white;
         background-color: #5E32BD;
     }
+    .detail {
+        font-size: 20px;
+        padding: 10px 24px 10px 24px;
+        width: 100%;
+        word-break: break-all;
+    }
+    .detail img{
+        width: 100%;
+    }
 </style>
 <template>
     <div class="index">
         <div style="font-size: 28px; padding: 10px 24px 10px 24px">{{title}}</div>
         <div style="font-size: 20px; padding: 10px 24px 10px 24px">{{createTime}}</div>
-        <div style="font-size: 20px; padding: 10px 24px 10px 24px; width: 100%" v-html="details"></div> 
+        <div class="detail" v-html="details"></div> 
     </div>
 </template>
 <script>

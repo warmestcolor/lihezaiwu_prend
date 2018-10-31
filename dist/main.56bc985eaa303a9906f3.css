@@ -545,6 +545,15 @@
   color: white;
   background-color: #5E32BD;
 }
+.detail[data-v-5b5b10cc] {
+  font-size: 20px;
+  padding: 10px 24px 10px 24px;
+  width: 100%;
+  word-break: break-all;
+}
+.detail img[data-v-5b5b10cc] {
+  width: 100%;
+}
 
 .index[data-v-e7ab893a] {
   width: 100%;
