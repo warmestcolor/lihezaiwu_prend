@@ -21,7 +21,7 @@
             推荐记录
             <div slot="content">
             <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
-        <Card>
+        <Card @click.native="goProject(item.project_id)">
             <p slot="title">用户：{{item.dist_user.username}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
@@ -43,6 +43,9 @@
             }
         },
         methods: {
+            goProject(itemId) {
+                this.$router.push({path: '/project'+'?id='+itemId});
+            },
             handleReachBottom () {
                 return new Promise(resolve => {
                     setTimeout(() => {
