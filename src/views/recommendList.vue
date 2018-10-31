@@ -22,7 +22,7 @@
             <div slot="content">
             <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
         <Card>
-            <p slot="title">用户：{{item.dist_user.name}}</p>
+            <p slot="title">用户：{{item.dist_user.username}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
             </p>
