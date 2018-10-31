@@ -95,7 +95,7 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            util.ajax.get('/api/item/high')
+            this.getRequest('/api/me/recommends')
                 .then(function (response) {
                     console.log(response);
                     console.log(that.itemlist);
