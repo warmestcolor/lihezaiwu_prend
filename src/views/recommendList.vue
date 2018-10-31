@@ -18,11 +18,11 @@
 <template>
         <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
-            创业分享
+            推荐记录
             <div slot="content">
             <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
         <Card>
-            <p slot="title">用户：{{item.dist_user_name}}</p>
+            <p slot="title">用户：{{item.dist_user.name}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
             </p>
