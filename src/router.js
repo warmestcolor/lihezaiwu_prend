@@ -46,7 +46,7 @@ const routers = [{
 },{
     path: '/activitylist',
     meta: {
-        title: '创业分享'
+        title: '线下活动'
     },
     component: (resolve) => require(['./views/activityList.vue'], resolve)
 },{
