@@ -92,6 +92,14 @@
             </CellGroup>
         </Card>
     </div>
+    <div style="padding: 10px;background:#eee">
+        <Card>
+        <div style="text-align:center">
+            <img style='width: 50%' src="./resource/code.jpg">
+            <h3>欢迎关注力合载物</h3>
+        </div>
+        </Card>
+    </div>
     </div>
 </template>
 <script>
