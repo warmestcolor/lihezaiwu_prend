@@ -20,6 +20,7 @@
         <Panel style="font-size: 20px" name="1">
             推荐记录
             <div slot="content">
+                项目推荐成功后，平台工作人员将会跟您联系，您将获取一定的的推荐奖励。
             <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
         <Card @click.native="goProject(item.project_id)">
             <p slot="title">用户：{{item.dist_user.username}}</p>

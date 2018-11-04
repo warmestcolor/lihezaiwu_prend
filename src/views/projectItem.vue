@@ -77,7 +77,7 @@
                 <Cell title="Display label content" label="label content" />
                 <Cell title="Display right content" extra="details" /> -->
                 <Cell title="项目资料" extra="浏览资料" :to="'/resource?id='+id" />
-                <Cell title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
+                <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
                 <Cell title="我要投资" @click.native="checkIn()"/>
                 <Cell title="我要推荐" @click.native="recommend()" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
@@ -149,7 +149,7 @@
                             console.log(error);
                         });
                 this.$Modal.success({
-                    title: '报名成功',
+                    // title: '报名成功',
                     content: '随后我们将会与您取得联系， 感谢您的关注'
                 });
             },
@@ -189,7 +189,7 @@
             recommend() {
                 this.$Modal.success({
                             title: '生成我的专属推荐链接',
-                            content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/project?id='+this.id+'&recommend='+this.uid+'\n（长按复制）'
+                            content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/project?id='+this.id+'&recommend='+this.uid+'\n（长按复制，建议简单编辑项目介绍后转发推荐，项目推荐成功，将获取项目奖励。）'
                 });
             }
         },

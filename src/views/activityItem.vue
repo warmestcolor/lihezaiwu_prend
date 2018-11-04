@@ -121,16 +121,30 @@
                     this.$router.push({path: '/regist'});
                     return false
                 }
-                this.postRequest('/api/activitie_checkin/'+ that.id, null)
+                this.$Modal.confirm({
+                    title: '确认是否报名？',
+                    content: '<p>请确认是否报名。</p>',
+                    loading: true,
+                    onOk: () => {
+                        that.postRequest('/api/activitie_checkin/'+ that.id, null)
                             .then(function (response) {
                             console.log(response);
+                            that.$Modal.remove();
+                            that.$Modal.success({
+                                title: '报名成功',
+                                content: '随后我们将会与您取得联系，感谢您的关注。'
+                            });
+
                         })
                         .catch(function (error) {
                             console.log(error);
+                            that.$Modal.remove();
+                            that.$Modal.error({
+                                title: '报名失败',
+                                content: '请稍后再试。'
+                            });
                         });
-                this.$Modal.success({
-                    title: '报名成功',
-                    content: '随后我们将会与您取得联系，感谢您的关注'
+                    }
                 });
             }
         },
