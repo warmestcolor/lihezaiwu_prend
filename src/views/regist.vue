@@ -31,14 +31,20 @@
         <FormItem label="真实姓名" prop="realname">
             <Input v-model="formValidate.realname" size="large" placeholder="请输入您的真实姓名"></Input>
         </FormItem>
-        <FormItem label="身份证号" prop="idcard">
-            <Input v-model="formValidate.idcard" size="large" placeholder="请输入您的身份证号"></Input>
-        </FormItem>
         <FormItem label="手机号" prop="phone">
             <Input v-model="formValidate.phone" size="large" placeholder="请输入您的手机号"></Input>
         </FormItem>
+        <!-- <FormItem label="身份证号" prop="idcard">
+            <Input v-model="formValidate.idcard" size="large" placeholder="请输入您的身份证号"></Input>
+        </FormItem>
         <FormItem label="电子邮箱" prop="mail">
             <Input v-model="formValidate.mail" size="large" placeholder="请输入您的电子邮箱"></Input>
+        </FormItem> -->
+        <FormItem label="工作单位" prop="company">
+            <Input v-model="formValidate.company" size="large" placeholder="请输入您的身份证号"></Input>
+        </FormItem>
+        <FormItem label="职务" prop="job">
+            <Input v-model="formValidate.job" size="large" placeholder="请输入您的电子邮箱"></Input>
         </FormItem>
         <FormItem>
             <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
@@ -58,6 +64,8 @@
                     realname: '',
                     idcard: '',
                     mail: '',
+                    company: '',
+                    job: '',
                     is_real_people: false,
                     is_right_people: false,
                     // passwd: '',
@@ -71,6 +79,14 @@
                     idcard: [
                         { required: true, message: '身份证号不能为空', trigger: 'blur' },
                         { required: true, type: 'string', min: 18, max: 18, message: '错误的格式', trigger: 'change'}
+                    ],
+                    company: [
+                         { required: true, message: '工作单位不能为空', trigger: 'blur' },
+                        { required: true, type: 'string', trigger: 'change'}
+                    ],
+                    job: [
+                         { required: true, message: '职务不能为空', trigger: 'blur' },
+                        { required: true, type: 'string', trigger: 'change'}
                     ],
                     phone: [
                         { required: true, message: '手机号码不能为空', trigger: 'blur' },
@@ -97,9 +113,11 @@
                         // function trnsfer(obj) {obj.toString()}
                         const data = {
                             telephone: this.formValidate.phone,
-                            id_card: this.formValidate.idcard,
-                            email: this.formValidate.mail,
-                            real_name: this.formValidate.realname
+                            // id_card: this.formValidate.idcard,
+                            // email: this.formValidate.mail,
+                            real_name: this.formValidate.realname,
+                            job: this.formValidate.job,
+                            company: this.formValidate.company
                         }
                         console.log('===========')
                         console.log(this.formValidate)
@@ -110,7 +128,10 @@
                         this.postRequest('/api/users/active', data)
                         .then(function (response) {
                             console.log(response);
-                            that.$Message.success('提交成功!');
+                            that.$Modal.success({
+                            title: '提交成功',
+                            content: '您已认证成功，后台人员将对您的信息进行审核，若有虚假信息，管理人员有权取消您的认证资格。'
+                });
                             that.$router.go(-1)
                         })
                         .catch(function (error) {
