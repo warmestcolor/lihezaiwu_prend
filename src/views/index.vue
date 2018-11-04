@@ -134,7 +134,7 @@
         </div>
         </TabPane>
         
-        <TabPane label="创业分享" name="name3" >
+        <TabPane label="线下活动" name="name3" >
         <div style="padding: 10px 20px 10px 20px" v-for="(item, index) in activityList" :key="index">
         <Card @click.native="goActivity(item.id)">
             <p slot="title">{{item.name}}</p>

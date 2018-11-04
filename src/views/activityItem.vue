@@ -130,22 +130,18 @@
                             .then(function (response) {
                             console.log(response);
                             that.$Modal.remove();
-                            that.$Modal.success({
-                                title: '报名成功',
-                                content: '随后我们将会与您取得联系，感谢您的关注。'
-                            });
+                            that.$$Message.success('报名成功,随后我们将会与您取得联系，感谢您的关注。'
+                            );
 
                         })
                         .catch(function (error) {
                             console.log(error);
                             that.$Modal.remove();
-                            that.$Modal.error({
-                                title: '报名失败',
-                                content: '请稍后再试。'
-                            });
-                        });
+                            that.$$Message.error('报名成功,随后我们将会与您取得联系，感谢您的关注。'
+                        );
+                        })
                     }
-                });
+                })
             }
         },
     created(){
