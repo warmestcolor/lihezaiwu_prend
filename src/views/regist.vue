@@ -41,10 +41,10 @@
             <Input v-model="formValidate.mail" size="large" placeholder="请输入您的电子邮箱"></Input>
         </FormItem> -->
         <FormItem label="工作单位" prop="company">
-            <Input v-model="formValidate.company" size="large" placeholder="请输入您的身份证号"></Input>
+            <Input v-model="formValidate.company" size="large" placeholder="请输入您的工作单位（个人请直接填写）"></Input>
         </FormItem>
         <FormItem label="职务" prop="job">
-            <Input v-model="formValidate.job" size="large" placeholder="请输入您的电子邮箱"></Input>
+            <Input v-model="formValidate.job" size="large" placeholder="请输入您的职务（个人请直接填写）"></Input>
         </FormItem>
         <FormItem>
             <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
