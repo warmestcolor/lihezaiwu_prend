@@ -76,9 +76,15 @@
                 <!-- <Cell title="Only show titles" />
                 <Cell title="Display label content" label="label content" />
                 <Cell title="Display right content" extra="details" /> -->
-                <Cell title="项目资料" extra="浏览资料" :to="'/resource?id='+id" />
+                <Cell v-if="is_real_people" title="项目简介" extra="浏览简介" :to="'/article?id='+article_id" />
+                <Cell v-else title="项目简介" extra="请先激活" :to="'/regist'" />
+                <Cell v-if="is_real_people" title="项目资源" extra="浏览资料" :to="'/resource?id='+id" />                
+                <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" />
                 <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
-                <Cell title="我要投资" @click.native="checkIn()"/>
+                <Cell v-if="is_real_people&&is_right_people&&type =='high'" title="我要投资" @click.native="checkIn()"/>
+                <Cell v-if="is_real_people&&type =='normal'" title="我要投资" @click.native="checkIn()"/>
+                <Cell v-if="!is_real_people" title="我要投资" extra="请先激活" :to="'/regist'" />
+                <Cell v-if="is_real_people&&!is_right_people&&type =='high'" title="我要投资" extra="合格投资人人认证" :to="'/test'" />
                 <Cell title="我要推荐" @click.native="recommend()" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
                 <Cell title="Disabled" disabled />
@@ -120,6 +126,7 @@
                 openId: null,
                 liveId: null,
                 live_id: null,
+                article_id: null,
                 pic: null,
                 is_real_people: false,
                 is_right_people: false,
@@ -221,6 +228,7 @@
                 that.resourceId = response.data.data.resourceId
                 that.liveId = response.data.data.live.id
                 that.live_id = response.data.data.live.live_id
+                that.article_id = response.data.data.article.id
 
             })
             .catch(function (error) {
