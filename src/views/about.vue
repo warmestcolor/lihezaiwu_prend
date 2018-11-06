@@ -68,32 +68,46 @@
             <div style="text-align:center">
                 <img src="./resource/vc.jpg" style="width: 75%">
             </div>
-            <p>深圳力合载物创业投资有限公司成立于2016年8月，是由力合科创集团（力合创投）、集团高管与实力雄厚的社会合作方共同发起设立。力合载物依托集团资源和经验，秉承力合品牌和声誉，采用创新体制和激励机制，组建了一支专业、团结、高效，富于使命感和职业精神的精干团队。<br>公司立志为科技成果转化和创新创业提供全方位的支持，通过孵化器/加速器、创业投资基金、企业咨询和服务、产业投资基金、并购基金等工具和手段，致力成为“企业家成功发达的阶梯，上市公司的摇篮”。为国家创新创业和产业发展贡献力量，成为创业者、投资人和地方政府最信赖的专业服务商。<br>主营业务<br>科技企业VC/PE基金<br>科技孵化器和加速器<br>产业投资基金/其他类金<br>产业项目深度投资与整合<br>经营理念<br>稳行致远，诚信为本。<br>专注态度、专业技能、专家水平。<br>追求高成功、追求高回报。<br>倾注热情、无私奉献、厚德载物。</p>
+            <p style="text-indent:2em; font-size: 14px;">深圳力合载物创业投资有限公司成立于2016年8月，是由力合科创集团（力合创投）、集团高管与实力雄厚的社会合作方共同发起设立。力合载物依托集团资源和经验，秉承力合品牌和声誉，采用创新体制和激励机制，组建了一支专业、团结、高效，富于使命感和职业精神的精干团队。</p>
+            <p style="text-indent:2em; font-size: 14px;">公司立志为科技成果转化和创新创业提供全方位的支持，通过孵化器/加速器、创业投资基金、企业咨询和服务、产业投资基金、并购基金等工具和手段，致力成为“企业家成功发达的阶梯，上市公司的摇篮”。为国家创新创业和产业发展贡献力量，成为创业者、投资人和地方政府最信赖的专业服务商。</p>
+            <p style="font-size: 14px; color: #00b2ff;">主营业务</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />科技企业VC/PE基金</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />科技孵化器和加速器</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />产业投资基金/其他类金</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />产业项目深度投资与整合</p>
+            <p style="font-size: 14px; color: #00b2ff;">经营理念</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />稳行致远，诚信为本。</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />专注态度、专业技能、专家水平。</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />追求高成功、追求高回报。</p>
+            <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />倾注热情、无私奉献、厚德载物。</p>
         </div>
         </TabPane>
         <TabPane label="企业加速" name="name2" >
         <div style="padding: 10px 20px 10px 20px">
             <Collapse  v-model="value2">
-                <Panel name="2-1">
+                <Panel style="font-size: 14px" name="2-1">
                     创业融资服务
-                    <p slot="content">1.融资辅导+专场直播路演
-                                <br>2.联合投资
-                                <br>3.商业计划书制作与优化、融资方案设计与融资协议法律服务
-                    </p>
+                    <div slot="content">
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />融资辅导+专场直播路演</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />联合投资</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />商业计划书制作与优化、融资方案设计与融资协议法律服务</p>
+                    </div>
                 </Panel>
-                <Panel name="2-2">
+                <Panel style="font-size: 14px" name="2-2">
                     创业企业咨询
-                    <p slot="content">1.股权与期权激励方案
-                                    <br>2.创业管理咨询（公司治理、创业风险、战略与路径、人力资源等）
-                                    <br>3.资源对接（合作伙伴、人力资源、客户、技术）
-                    </p>
+                    <div slot="content">
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />股权与期权激励方案</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />创业管理咨询（公司治理、创业风险、战略与路径、人力资源等）</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />资源对接（合作伙伴、人力资源、客户、技术）</p>
+                    </div>
                 </Panel>
-                <Panel name="2-3">
+                <Panel style="font-size: 14px" name="2-3">
                     合作伙伴服务
-                    <p slot="content">1.企业商务服务资质办理、项目与资金申报；专利、会计、工商、法律服务；品牌、市场、传播、会展服务等。
-                                    <br>2.孵化器入驻与园区招商
-                                    <br>3.地方政府招商引资、引智
-                    </p>
+                    <div slot="content">
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />企业商务服务资质办理、项目与资金申报；专利、会计、工商、法律服务；品牌、市场、传播、会展服务等。</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />孵化器入驻与园区招商</p>
+                    <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />地方政府招商引资、引智</p>
+                    </div>
                 </Panel>
             </Collapse>
         </div>
@@ -101,34 +115,33 @@
         
         <TabPane label="创业投资" name="name3" >
         <div style="padding: 10px 20px 10px 20px">
-        <p>力合科创集团以往和正在管理的基金超过20支，管理基金规模超过100亿元。在电子信息通讯、生物医药、新能源、新材料、先进装备制造及现代农业、现代服务业等领域，投资了200余家具备技术创新和商业模式创新的创业企业，其中已有40余家实现成功退出，其中22家在国内A股市场上市，投资项目的整体内部收益率（IRR）超过30%。
-            <br>力合载物目前管理两只创业投资基金和2只地方政府产业基金，完成投资项目10个。
-            <br>投资方向选择
-            <br>1.国家政策扶持的战略新兴产业。节能环保、新兴信息产业、生物产业、新能源、新能源汽车、高端装备制造业和新材料。
-            <br>2.资本市场欢迎的“三高六新”企业。即成长性高、科技含量高、附加值高以及新经济、新服务、新农业、新材料、新能源和新商业模式。
-            <br>3.符合经济和社会周期的高成长产业。受益于中国城市化、人口特点、消费升级、社会进步、产业结构调整，以及周期性性底部复苏的产业。
-            <br>投资主要策略
-            <br>1.项目特点：高技术、创新性或较高壁垒必有其一。
-            <br>2.投资价值：高成长、上市溢价、并购溢价必有其一。
-        </p>
+        <p style="text-indent:2em; font-size: 14px;">力合科创集团以往和正在管理的基金超过20支，管理基金规模超过100亿元。在电子信息通讯、生物医药、新能源、新材料、先进装备制造及现代农业、现代服务业等领域，投资了200余家具备技术创新和商业模式创新的创业企业，其中已有40余家实现成功退出，其中22家在国内A股市场上市，投资项目的整体内部收益率（IRR）超过30%。</p>
+        <p style="text-indent:2em; font-size: 14px;">力合载物目前管理两只创业投资基金和三只地方政府产业基金，完成投资项目10个。</p>
+        <p style="font-size: 14px; color: #00b2ff;">投资方向选择</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />国家政策扶持的战略新兴产业。节能环保、新兴信息产业、生物产业、新能源、新能源汽车、高端装备制造业和新材料。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />资本市场欢迎的“三高六新”企业。即成长性高、科技含量高、附加值高以及新经济、新服务、新农业、新材料、新能源和新商业模式。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />符合经济和社会周期的高成长产业。受益于中国城市化、人口特点、消费升级、社会进步、产业结构调整，以及周期性性底部复苏的产业。</p>
+        <p style="font-size: 14px; color: #00b2ff;">投资主要策略</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目特点：高技术、创新性或较高壁垒必有其一。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />2.投资价值：高成长、上市溢价、并购溢价必有其一。</p>
                 <Collapse v-model="value3">
-                    <Panel name="3-1">
+                    <Panel style="font-size: 14px" name="3-1">
                         基金管理
-                        <p slot="content">
+                        <p slot="content" style="text-indent:2em; font-size: 14px;">
                             力合精选成长基金重点投向于新兴电子信息、智慧安防、新材料、新能源、无人机、VR、生物医疗、大健康、智能机器人等新兴科技领域。力合载物目前已经成立两只创业投资基金及两只地方政府基金。
                         </p>
                     </Panel>
-                    <Panel name="3-2">
+                    <Panel style="font-size: 14px" name="3-2">
                         投资案例
                         <div slot="content">
-                        <p>
+                        <p style="text-indent:2em; font-size: 14px;">
                             力合科创已投资200多家企业，其中上市企业近30家。力合载物及团队已投高科技企业超60家。
                             <br>力合集团已投资孵化部分上市公司：
                         </p>
                         <div style="text-align:center">
                             <img src="./resource/753147.png" style="width: 100%">
                         </div>
-                        <p>
+                        <p style="text-indent:2em; font-size: 14px;">
                             <br>力合载物及团队已投部分项目：
                         </p>
                         <div style="text-align:center">
