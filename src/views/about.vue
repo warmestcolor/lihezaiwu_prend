@@ -123,8 +123,7 @@
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />符合经济和社会周期的高成长产业。受益于中国城市化、人口特点、消费升级、社会进步、产业结构调整，以及周期性性底部复苏的产业。</p>
         <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">投资主要策略</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目特点：高技术、创新性或较高壁垒必有其一。</p>
-        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />投资价值：高成长、上市溢价、并购溢价必有其一。</p>
-                <div style="padding-top: 20px;">
+        <p style="font-size: 14px; padding-bottom: 30px;"><Icon type="md-arrow-dropright" size=14 />投资价值：高成长、上市溢价、并购溢价必有其一。</p>
                 <Collapse v-model="value3">
                     <Panel style="font-size: 14px" name="3-1">
                         基金管理
@@ -148,7 +147,6 @@
                         </div>
                     </Panel>
                 </Collapse>
-                </div>
              </div>
         </TabPane>
         <TabPane label="联系我们" name="name4" >
