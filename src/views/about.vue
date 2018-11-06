@@ -123,12 +123,12 @@
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />符合经济和社会周期的高成长产业。受益于中国城市化、人口特点、消费升级、社会进步、产业结构调整，以及周期性性底部复苏的产业。</p>
         <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">投资主要策略</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目特点：高技术、创新性或较高壁垒必有其一。</p>
-        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />2.投资价值：高成长、上市溢价、并购溢价必有其一。</p>
-                <Collapse v-model="value3">
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />投资价值：高成长、上市溢价、并购溢价必有其一。</p>
+                <Collapse v-model="value3" style="padding-top: 20px;">
                     <Panel style="font-size: 14px" name="3-1">
                         基金管理
                         <p slot="content" style="text-indent:2em; font-size: 14px;">
-                            力合精选成长基金重点投向于新兴电子信息、智慧安防、新材料、新能源、无人机、VR、生物医疗、大健康、智能机器人等新兴科技领域。力合载物目前已经成立两只创业投资基金及两只地方政府基金。
+                            力合精选成长基金重点投向于新兴电子信息、智慧安防、新材料、新能源、无人机、VR、生物医疗、大健康、智能机器人等新兴科技领域。力合载物目前已经成立两只创业投资基金及三只地方政府基金。
                         </p>
                     </Panel>
                     <Panel style="font-size: 14px" name="3-2">
