@@ -67,7 +67,8 @@
             <div style="text-align:center">
             <img :src="pic" style="width:100%">
             </div>
-            <p>{{describe}}</p>
+            <!-- <p>{{describe}}</p> -->
+            <div v-html="describe"></div>
         </Card>
         </div>
        <div style="padding: 10px;background:#eee">

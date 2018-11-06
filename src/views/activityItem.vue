@@ -67,7 +67,8 @@
             <div style="text-align:center">
             <img :src="image_url" style="width:100%">
             </div>
-            <p>{{describe}}</p>
+            <!-- <p>{{describe}}</p> -->
+            <div v-html="describe"></div>
             <p>开始时间 {{start_time}}</p>
             <p>结束时间 {{end_time}}</p>
         </Card>

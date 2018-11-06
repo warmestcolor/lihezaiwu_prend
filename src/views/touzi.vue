@@ -29,7 +29,8 @@
             <div style="text-align:center">
             <img :src= "item.image_url" style="width: 100%">
             </div>
-            <p>{{item.describe}}</p>
+            <!-- <p>{{item.describe}}</p> -->
+            <div v-html="item.describle"></div>
         </Card>
         </div>
         <div style="padding-top: 10px">
