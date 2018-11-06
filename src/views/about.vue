@@ -124,7 +124,8 @@
         <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">投资主要策略</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目特点：高技术、创新性或较高壁垒必有其一。</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />投资价值：高成长、上市溢价、并购溢价必有其一。</p>
-                <Collapse v-model="value3" style="padding-top: 20px;">
+                <div style="padding-top: 20px;">
+                <Collapse v-model="value3">
                     <Panel style="font-size: 14px" name="3-1">
                         基金管理
                         <p slot="content" style="text-indent:2em; font-size: 14px;">
@@ -147,6 +148,7 @@
                         </div>
                     </Panel>
                 </Collapse>
+                </div>
              </div>
         </TabPane>
         <TabPane label="联系我们" name="name4" >
