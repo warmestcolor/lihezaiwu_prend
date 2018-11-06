@@ -19,10 +19,14 @@
         <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
             推荐记录
-            <div slot="content">
-                项目推荐成功后，平台工作人员将会跟您联系，您将获取一定的的推荐奖励。
+            <div slot="content">    
+            <div style="padding: 5px">
+                <Card>
+                <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目推荐成功后，平台工作人员将会跟您联系，您将获取一定的的推荐奖励。</p>
+                </Card>
+            </div>
             <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
-        <Card @click.native="goProject(item.project_id)">
+            <Card @click.native="goProject(item.project_id)">
             <p slot="title">用户：{{item.dist_user.username}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
