@@ -30,7 +30,7 @@
             <img :src= "item.image_url" style="width: 100%">
             </div>
             <!-- <p>{{item.describe}}</p> -->
-            <div v-html="item.describle"></div>
+            <div v-html="item.describe"></div>
         </Card>
         </div>
         <div style="padding-top: 10px">
