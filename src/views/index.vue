@@ -64,7 +64,7 @@
         <Row type="flex" justify="center" align="top">
             <Col span="24">
                 <h1 style="text-align: center">
-                    <img src="./resource/4.png">
+                    <img src="./resource/vc.jpg" style="width: 75%">
                 </h1>
             </Col>
         </Row>

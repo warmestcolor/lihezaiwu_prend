@@ -57,6 +57,10 @@
         font-size: 14px;
         color: white;
         background-color: #5E32BD;
+    }    
+    .detail {
+        width: 100%;
+        word-break: break-all;
     }
 </style>
 <template>
@@ -68,7 +72,8 @@
             <img :src="pic" style="width:100%">
             </div>
             <!-- <p>{{describe}}</p> -->
-            <div v-html="describe"></div>
+            <!-- <div v-html="describe"></div> -->
+            <div class="detail" v-html="details"></div> 
         </Card>
         </div>
        <div style="padding: 10px;background:#eee">
@@ -77,10 +82,10 @@
                 <!-- <Cell title="Only show titles" />
                 <Cell title="Display label content" label="label content" />
                 <Cell title="Display right content" extra="details" /> -->
-                <Cell v-if="is_real_people" title="项目简介" extra="浏览简介" :to="'/article?id='+article_id" />
+                <!-- <Cell v-if="is_real_people" title="项目简介" extra="浏览简介" :to="'/article?id='+article_id" />
                 <Cell v-else title="项目简介" extra="请先激活" :to="'/regist'" />
                 <Cell v-if="is_real_people" title="项目资源" extra="浏览资料" :to="'/resource?id='+id" />                
-                <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" />
+                <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" /> -->
                 <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
                 <Cell v-if="is_real_people&&is_right_people&&type =='high'" title="我要投资" @click.native="checkIn()"/>
                 <Cell v-if="is_real_people&&type =='normal'" title="我要投资" @click.native="checkIn()"/>
@@ -132,6 +137,7 @@
                 is_real_people: false,
                 is_right_people: false,
                 recommendid: null,
+                details: null,
             }
         },
         methods: {
@@ -235,6 +241,14 @@
             .catch(function (error) {
                 console.log(error);
             });
+        this.getRequest('/api/articles/' + that.article_id)
+                .then(function (response) {
+                    console.log(response);
+                    that.details = response.data.data.detail
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         this.getRequest('/api/me')
             .then(function (response) {
                 console.log(response);
