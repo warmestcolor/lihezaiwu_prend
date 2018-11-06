@@ -236,12 +236,7 @@
                 that.liveId = response.data.data.live.id
                 that.live_id = response.data.data.live.live_id
                 that.article_id = response.data.data.article.id
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        this.getRequest('/api/articles/' + that.article_id)
+                that.getRequest('/api/articles/' + that.article_id)
                 .then(function (response) {
                     console.log(response);
                     that.details = response.data.data.detail
@@ -249,6 +244,11 @@
                 .catch(function (error) {
                     console.log(error);
                 });
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         this.getRequest('/api/me')
             .then(function (response) {
                 console.log(response);
