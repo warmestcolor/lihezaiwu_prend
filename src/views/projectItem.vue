@@ -155,17 +155,27 @@
                     this.$router.push({path: '/test'});
                     return false
                 }
-                this.postRequest('/api/project_checkin/'+ that.id, null)
+                this.$Modal.confirm({
+                    title: '确认是否报名？',
+                    content: '<p>请确认是否报名，报名后我们将与您取得联系。</p>',
+                    loading: true,
+                    onOk: () => {
+                        that.postRequest('/api/project_checkin/'+ that.id, null)
                             .then(function (response) {
                             console.log(response);
+                            that.$Modal.remove();
+                            that.$$Message.success('随后我们将会与您取得联系，感谢您的关注。'
+                            );
+
                         })
                         .catch(function (error) {
                             console.log(error);
-                        });
-                this.$Modal.success({
-                    // title: '报名成功',
-                    content: '随后我们将会与您取得联系， 感谢您的关注'
-                });
+                            that.$Modal.remove();
+                            that.$$Message.error('随后我们将会与您取得联系，感谢您的关注。'
+                        );
+                        })
+                    }
+                })
             },
             goLive(id){
                 if(id != null&&id != undefined){
@@ -218,7 +228,7 @@
                     console.log(response);
                     that.$Modal.info({
                         title: '项目推荐',
-                        content: '这是用户ID'+that.recommendid+'向您推荐的项目，快来看看吧！'
+                        content: '这是用户ID：'+that.recommendid+'向您推荐的项目，快来看看吧！'
                 });  
                 })
                 .catch(function (error) {

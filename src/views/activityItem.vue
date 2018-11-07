@@ -77,6 +77,7 @@
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <Cell title="我要报名" @click.native="checkIn()"/>
+                <Cell title="我要推荐" @click.native="recommend()" />
             </CellGroup>
         </Card>
     </div>
@@ -124,7 +125,7 @@
                 }
                 this.$Modal.confirm({
                     title: '确认是否报名？',
-                    content: '<p>请确认是否报名。</p>',
+                    content: '<p>请确认是否报名，报名后我们将与您取得联系。</p>',
                     loading: true,
                     onOk: () => {
                         that.postRequest('/api/activitie_checkin/'+ that.id, null)
@@ -143,12 +144,36 @@
                         })
                     }
                 })
+            },
+            recommend() {
+                this.$Modal.success({
+                            title: '生成我的专属推荐链接',
+                            content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/activity?id='+this.id+'&recommend='+this.uid+'\n（长按复制，建议简单编辑活动介绍后转发推荐。）'
+                });
             }
         },
     created(){
         console.log(this.$route.query.id)
         var that = this
         this.id = this.$route.query.id
+            if(this.$route.query.recommend){
+            that.recommendid = this.$route.query.recommend
+            that.postRequest('/api/activities/'+that.id+'/recommend/'+that.recommendid, null)                
+                .then(function (response) {
+                    console.log(response);
+                    that.$Modal.info({
+                        title: '活动推荐',
+                        content: '这是用户ID：'+that.recommendid+'向您推荐的活动，快来看看吧！'
+                });  
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    that.$Modal.info({
+                        title: '项目推荐',
+                        content: '这是用户ID：'+that.recommendid+'向您推荐的活动，快来看看吧！'
+                });
+                });
+        }
             this.getRequest('/api/activities/'+this.$route.query.id)
                 .then(function (response) {
                     console.log(response);
