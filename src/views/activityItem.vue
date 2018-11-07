@@ -136,12 +136,12 @@
                             );
 
                         })
-                        // .catch(function (error) {
-                        //     console.log(error);
-                        //     that.$Modal.remove();
-                        //     that.$Message.error('报名成功,随后我们将会与您取得联系，感谢您的关注。'
-                        // );
-                        // })
+                        .catch(function (error) {
+                            console.log(error);
+                            that.$Modal.remove();
+                            that.$Message.error('请勿重复报名。'
+                        );
+                        })
                     }
                 })
             },
