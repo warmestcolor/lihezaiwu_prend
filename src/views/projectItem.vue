@@ -171,7 +171,7 @@
                         .catch(function (error) {
                             console.log(error);
                             that.$Modal.remove();
-                            that.$Message.error('请勿重复报名。。'
+                            that.$Message.error('请勿重复报名。'
                         );
                         })
                     }
