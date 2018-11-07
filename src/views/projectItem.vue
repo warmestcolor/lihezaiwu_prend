@@ -164,14 +164,14 @@
                             .then(function (response) {
                             console.log(response);
                             that.$Modal.remove();
-                            that.$$Message.success('随后我们将会与您取得联系，感谢您的关注。'
+                            that.$Message.success('随后我们将会与您取得联系，感谢您的关注。'
                             );
 
                         })
                         .catch(function (error) {
                             console.log(error);
                             that.$Modal.remove();
-                            that.$$Message.error('随后我们将会与您取得联系，感谢您的关注。'
+                            that.$Message.error('随后我们将会与您取得联系，感谢您的关注。'
                         );
                         })
                     }

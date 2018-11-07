@@ -47,7 +47,7 @@ axios.interceptors.request.use(config=> {
       window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3f179d9e380457a5&redirect_uri=https%3A%2F%2Fweixin.leaguervc.com%2Fapi%2Fwechat%2Fuser%2FuserInfo&response_type=code&scope=snsapi_userinfo#wechat_redirect"
     } else{
       console.log("未知错误"+err.response.status+err.response)
-      this.$$Message.error(err.response.data.message)
+      this.$Message.error(err.response.data.message)
     }
     return Promise.resolve(err);
   })
