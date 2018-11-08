@@ -574,6 +574,12 @@
   color: white;
   background-color: #5E32BD;
 }
+.detail[data-v-e7ab893a] {
+  /* font-size: 20px; */
+  padding: 10px 24px 10px 24px;
+  width: 100%;
+  word-break: break-all;
+}
 
 .index[data-v-90b5d9ea] {
   width: 100%;

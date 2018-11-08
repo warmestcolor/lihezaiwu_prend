@@ -109,7 +109,7 @@ const routers = [{
 },{
     path: '/about',
     meta: {
-        title: '关于平台'
+        title: '关于力合'
     },
     component: (resolve) => require(['./views/about.vue'], resolve)
 },{
