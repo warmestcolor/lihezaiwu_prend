@@ -71,11 +71,12 @@
         <div style="font-size: 20px; padding: 10px 24px 10px 24px">了解我们</div>
         <!-- <Tabs value="name1" span="24" style="width: 100%">
         <TabPane label="了解我们" name="name1" >
-        <div style="padding: 10px 20px 10px 20px">
+        <div style="padding: 10px 20px 10px 20px"-->
+            
+        <div class="detail">
             <div style="text-align:center">
                 <img src="./resource/vc.jpg" style="width: 75%">
-            </div> -->
-        <div class="detail">     
+            </div>
             <p style="text-indent:2em; font-size: 14px;">深圳力合载物创业投资有限公司成立于2016年8月，是由力合科创集团（力合创投）、集团高管与实力雄厚的社会合作方共同发起设立。力合载物依托集团资源和经验，秉承力合品牌和声誉，采用创新体制和激励机制，组建了一支专业、团结、高效，富于使命感和职业精神的精干团队。</p>
             <p style="text-indent:2em; font-size: 14px; padding-top: 20px;">公司立志为科技成果转化和创新创业提供全方位的支持，通过孵化器/加速器、创业投资基金、企业咨询和服务、产业投资基金、并购基金等工具和手段，致力成为“企业家成功发达的阶梯，上市公司的摇篮”。为国家创新创业和产业发展贡献力量，成为创业者、投资人和地方政府最信赖的专业服务商。</p>
             <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">主营业务</p>
