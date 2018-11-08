@@ -27,7 +27,7 @@
             投资项目
             </p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 100%">
+            <img :src= "item.image_url" style="width: 50%">
             </div>
             <!-- <p>{{item.describe}}</p> -->
             <div v-html="item.describe"></div>
@@ -48,7 +48,7 @@
             领投基金
             </p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 100%">
+            <img :src= "item.image_url" style="width: 50%">
             </div>
             <div v-html="item.describe"></div>
         </Card>

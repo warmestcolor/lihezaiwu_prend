@@ -16,23 +16,29 @@
     }
 </style>
 <template>
-    <Collapse v-model="value1" >
+        <Collapse v-model="value1" >
         <Panel style="font-size: 20px" name="1">
-            领投基金
-            <div slot="content">
-            <div style="padding-top: 10px" v-for="(item, index) in highList" :key="index">
-        <Card @click.native="goProject(item.id)">
-            <p slot="title">{{item.name}}</p>
-            <p slot="extra">
+            报名记录
+            <div slot="content">    
+            <div style="padding: 5px">
+                <Card>
+                <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />这里是您已经报名的项目</p>
+                </Card>
+            </div>
+            <div style="padding-top: 10px" v-for="(item, index) in itemlist" :key="index">
+            <Card @click.native="goProject(item.project_id)">
+            <p slot="title">报名项目：{{item.project.name}}</p>
+            <p href="#" slot="extra">
+            {{item.inserted_at.slice(0,10)}}
+            </p>
+            <p v-if="item.project.type=='high'">
             领投基金
             </p>
-            <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <p v-if="item.project.type=='normal'">
+            投资项目
+            </p>
+            </Card>
             </div>
-            <!-- <p>{{item.describe}}</p> -->
-            <div v-html="item.describe"></div>
-        </Card>
-        </div>
             </div>
         </Panel>
     </Collapse>
@@ -42,8 +48,8 @@
     export default {
         data () {
             return {
-                highList: [],
-                value1: '1'
+                itemlist: [{project: {name: "测试", type: "normal"}, inserted_at: "2018-11-08"}],
+                value1: '1',
             }
         },
         methods: {
@@ -68,10 +74,11 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            this.getRequest('/api/projects_high')
+            this.getRequest('/api/me/checkin')
                 .then(function (response) {
                     console.log(response);
-                    that.highList = response.data.data
+                    console.log(that.itemlist);
+                    that.itemlist = response.data.data
                 })
                 .catch(function (error) {
                     console.log(error);

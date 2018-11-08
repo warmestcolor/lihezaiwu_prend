@@ -29,9 +29,6 @@ const routers = [{
     },
     component: (resolve) => require(['./views/newslist.vue'], resolve)
 },{
-    path: '/author',
-    component: (resolve) => require(['./views/author.vue'], resolve)
-},{
     path: '/normal',
     meta: {
         title: '投资项目'
@@ -55,6 +52,12 @@ const routers = [{
         title: '项目推荐'
     },
     component: (resolve) => require(['./views/recommendList.vue'], resolve)
+},{
+    path: '/checkin',
+    meta: {
+        title: '项目报名'
+    },
+    component: (resolve) => require(['./views/checkinList.vue'], resolve)
 },{
     path: '/resource',
     meta: {
@@ -109,6 +112,12 @@ const routers = [{
         title: '关于平台'
     },
     component: (resolve) => require(['./views/about.vue'], resolve)
+},{
+    path: '/service',
+    meta: {
+        title: '服务项目'
+    },
+    component: (resolve) => require(['./views/service.vue'], resolve)
 },{
     path: '/contact',
     meta: {

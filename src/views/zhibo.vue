@@ -24,7 +24,7 @@
         <Card @click.native="goLive(item.id)">
             <p slot="title">{{item.name}}</p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 100%">
+            <img :src= "item.image_url" style="width: 50%">
             </div>
             <!-- <p>{{item.describle}}</p> -->
             <div v-html="item.describle"></div>
