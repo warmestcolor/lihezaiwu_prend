@@ -68,7 +68,7 @@
 <template>
     <div class="index">
         <div style="font-size: 28px; padding: 10px 24px 10px 24px">关于力合</div>
-        <div style="font-size: 20px; padding: 10px 24px 10px 24px">了解我们</div>
+        <!-- <div style="font-size: 20px; padding: 10px 24px 10px 24px">了解我们</div> -->
         <!-- <Tabs value="name1" span="24" style="width: 100%">
         <TabPane label="了解我们" name="name1" >
         <div style="padding: 10px 20px 10px 20px"-->

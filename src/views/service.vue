@@ -68,9 +68,9 @@
         <p style="text-indent:2em; font-size: 14px;">力合创投是中国最早的知名高科技特色的创业投资机构，股东背景为清华大学和深圳市政府，目前管理基金规模超过100亿元。在电子信息通讯、生物医药、新能源、新材料、先进装备制造及现代农业、现代服务业等领域，投资了200余家具备技术创新和商业模式创新的创业企业，其中已有40余家实现成功退出，其中22家在国内A股市场上市，投资项目的整体内部收益率（IRR）超过30%。</p>
         <p style="text-indent:2em; font-size: 14px; padding-top: 20px;">力合载物是力合创投旗下自主经营的独立品牌。致力于科技型、创新型VC投资；目前管理5支基金。</p>
         <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">投资方向选择</p>
-        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />国家政策扶持的战略新兴产业。节能环保、新兴信息产业、生物产业、新能源、新能源汽车、高端装备制造业和新材料。</p>
-        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />资本市场欢迎的“三高六新”企业。即成长性高、科技含量高、附加值高以及新经济、新服务、新农业、新材料、新能源和新商业模式。</p>
-        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />符合经济和社会周期的高成长产业。受益于中国城市化、人口特点、消费升级、社会进步、产业结构调整，以及周期性性底部复苏的产业。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />国家政策扶持的战略新兴产业。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />资本市场欢迎的“三高六新”企业。</p>
+        <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />符合经济和社会周期的高成长产业。</p>
         <p style="font-size: 14px; color: #00b2ff; padding-top: 20px;">投资主要策略</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />项目特点：高技术、创新性或较高壁垒必有其一。</p>
         <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />投资价值：高成长、上市溢价、并购溢价必有其一。</p>
