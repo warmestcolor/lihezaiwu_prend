@@ -98,7 +98,10 @@
                     console.log(response);
                     that.id = response.data.data.id
                     that.title = response.data.data.title
-                    that.details = response.data.data.detail
+                    var value = response.data.data.detail
+                    var result = value.replace(/img/g, "img style=\"width: 100%\"");
+                    console.log('result:' + result); 
+                    that.details = result
                     that.createTime = response.data.data.inserted_at.slice(0,10)
                 })
                 .catch(function (error) {
