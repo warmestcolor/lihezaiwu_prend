@@ -76,6 +76,7 @@
                 <Cell title="激活/更新用户信息" to="/regist" />
                 <Cell title="合格投资人认证" to="/test" />
                 <Cell title="我的推荐" to="/recommend" />
+                <Cell title="我的报名" to="/checkin" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
                 <Cell title="Disabled" disabled />
                 <Cell title="Selected" selected />

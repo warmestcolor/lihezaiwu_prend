@@ -156,8 +156,8 @@
                     return false
                 }
                 this.$Modal.confirm({
-                    title: '确认是否报名？',
-                    content: '<p>请确认是否报名，报名后我们将与您取得联系。</p>',
+                    title: '确认是否投资？',
+                    content: '<p>请确认是否投资，确认后我们将与您取得联系。</p>',
                     loading: true,
                     onOk: () => {
                         that.postRequest('/api/project_checkin/'+ that.id, null)
@@ -171,7 +171,7 @@
                         .catch(function (error) {
                             console.log(error);
                             that.$Modal.remove();
-                            that.$Message.error('请勿重复报名。'
+                            that.$Message.error('请勿重复提交投资意向。'
                         );
                         })
                     }
