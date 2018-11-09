@@ -85,7 +85,7 @@
         <TabPane label="孵化加速" name="name2" >
         <div style="padding: 10px 20px 10px 20px">
             <p style="text-indent:2em; font-size: 14px;">力合科创集团拥有深圳、珠海、佛山、顺德、东莞、无锡、长株潭、南京、惠州等多个高科技创新基地，构建起了辐射海内外的科技创新孵化体系及产业投资平台；吸引落户了1000多家各类高科技企业。力合星空孵化器是力合科创集团下属的早期企业孵化机构，已经形成全国性的网络布局。</p>
-            <p style="text-indent:2em; font-size: 14px; padding-top: 20px;">载物之星加速器为力合载物旗下为企业提供成长加速服务的品牌。服务的内容加速器运营和招商、科技项目孵化、创业项目辅导、创业融资、创业服务等。</p>
+            <p style="text-indent:2em; font-size: 14px; padding-top: 20px;">载物之星加速器为力合载物旗下为企业提供成长加速服务的品牌。服务的内容：加速器运营和招商、科技项目孵化、创业项目辅导、创业融资、创业服务等。</p>
             <div style="text-align:center; padding-top: 20px;">
                 <img src="./resource/1541647404814.jpg" style="width: 75%">
             </div>
