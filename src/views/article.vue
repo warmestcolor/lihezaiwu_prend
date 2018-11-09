@@ -64,7 +64,7 @@
         width: 100%;
         word-break: break-all;
     }
-    .detail > .media-wrap.image-wrap > .img{
+    .detail > .media-wrap.image-wrap > img{
         width: 100%;
     }
 </style>
