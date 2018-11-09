@@ -27,7 +27,7 @@
             投资项目
             </p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <img :src= "item.image_url" style="width: 100%">
             </div>
             <!-- <p>{{item.describe}}</p> -->
             <div v-html="item.describe"></div>

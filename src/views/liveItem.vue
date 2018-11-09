@@ -65,7 +65,7 @@
         <Card :bordered="false">
             <p slot="title" style="font-size: 20px">{{name}}</p>          
             <div style="text-align:center">
-            <img :src="image_url" style="width:50%">
+            <img :src="image_url" style="width:100%">
             </div>
             <!-- <p>{{describe}}</p> -->
             <div v-html="describe"></div>

@@ -28,7 +28,7 @@
             进行中
             </a> -->
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <img :src= "item.image_url" style="width: 100%">
             </div>
             <!-- <p>{{item.describle}}</p> -->
             <div v-html="item.describle"></div>

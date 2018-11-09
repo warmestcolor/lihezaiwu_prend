@@ -69,7 +69,7 @@
         <Card :bordered="false">
             <p slot="title" style="font-size: 20px">{{name}}</p>          
             <div style="text-align:center">
-            <img :src="pic" style="width:50%">
+            <img :src="pic" style="width:100%">
             </div>
             <!-- <p>{{describe}}</p> -->
             <!-- <div v-html="describe"></div> -->
@@ -249,7 +249,10 @@
                 that.getRequest('/api/articles/' + that.article_id)
                 .then(function (response) {
                     console.log(response);
-                    that.details = response.data.data.detail
+                    var value = response.data.data.detail
+                    var result = value.replace(/img/g, "img style=\"width: 100%\"");
+                    console.log('result:' + result); 
+                    that.details = result
                 })
                 .catch(function (error) {
                     console.log(error);

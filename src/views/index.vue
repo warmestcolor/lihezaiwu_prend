@@ -64,7 +64,7 @@
         <Row type="flex" justify="center" align="top">
             <Col span="24">
                 <h1 style="text-align: center">
-                    <img src="./resource/vc.jpg" style="width: 75%">
+                    <img src="./resource/vc.jpg" style="width: 100%">
                 </h1>
             </Col>
         </Row>
@@ -104,7 +104,7 @@
             投资项目
             </p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <img :src= "item.image_url" style="width: 100%">
             </div>
             <p>{{item.describle}}</p>
         </Card>
@@ -124,7 +124,7 @@
             投资项目
             </p>
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <img :src= "item.image_url" style="width: 100%">
             </div>
             <p>{{item.describe}}</p>
         </Card>
@@ -143,7 +143,7 @@
             进行中
             </a> -->
             <div style="text-align:center">
-            <img :src= "item.image_url" style="width: 50%">
+            <img :src= "item.image_url" style="width: 100%">
             </div>
             <p>{{item.describle}}</p>
         </Card>
