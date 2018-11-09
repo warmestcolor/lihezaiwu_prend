@@ -518,7 +518,7 @@
   width: 100%;
   word-break: break-all;
 }
-.detail img[data-v-5b5b10cc] {
+.detail > .media-wrap.image-wrap > .img[data-v-5b5b10cc] {
   width: 100%;
 }
 
