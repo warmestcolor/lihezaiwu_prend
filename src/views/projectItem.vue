@@ -163,7 +163,8 @@
                 is_right_people: false,
                 recommendid: null,
                 details: null,
-                isOuttime: false
+                isOuttime: false,
+                end_time: null
             }
         },
         methods: {
@@ -297,12 +298,13 @@
                 that.article_id = response.data.data.article.id
                 var end_time = response.data.data.end_time
                 var data = that.getNow()
-                console.log("datastring"+data)
+                console.log(data)
                 var dateInt = parseInt(data)
                 var endInt = parseInt(end_time)
                 if(data > end_time){
                     that.isOuttime = true
                 }
+                if( that.article_id != null ){
                 that.getRequest('/api/articles/' + that.article_id)
                 .then(function (response) {
                     console.log(response);
@@ -314,7 +316,7 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-
+                }
             })
             .catch(function (error) {
                 console.log(error);
