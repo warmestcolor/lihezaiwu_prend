@@ -189,6 +189,7 @@
             this.getRequest('/api/me')
                 .then(function (response) {
                     console.log(response);
+                    that.uid = response.data.data.id
                     that.is_real_people = response.data.data.is_real_people
                     that.is_right_people = response.data.data.is_right_people
                 })

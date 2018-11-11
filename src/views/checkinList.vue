@@ -94,7 +94,7 @@
         created(){
             console.log(this.GLOBAL)
             var that = this
-            this.postRequest('/api/me/checkin/project', null)
+            this.postRequest('/api/me/checkin/activity', null)
                 .then(function (response) {
                     console.log(response);
                     console.log(that.itemlist);
