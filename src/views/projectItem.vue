@@ -101,7 +101,7 @@
             </CellGroup>
         </Card>
         </div>
-       <div v-if="isOuttime" style="padding: 10px;background:#eee">
+       <div v-if="!isOuttime" style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <!-- <Cell title="Only show titles" />
