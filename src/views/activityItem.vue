@@ -119,7 +119,7 @@
                 image_url: null,
                 is_real_people: false,
                 is_right_people: false,
-                is_Outtime
+                is_Outtime: false
             }
         },
         methods: {
