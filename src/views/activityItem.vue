@@ -73,14 +73,22 @@
             <p>结束时间 {{end_time}}</p>
         </Card>
         </div>
-       <div style="padding: 10px;background:#eee">
+        <div v-if="is_Outtime" style="padding: 10px;background:#eee">
+        <Card title="选项" icon="ios-options" :padding="0">
+            <CellGroup>
+                <Cell title="我要报名" extra="已结束"/>
+                <Cell title="我要推荐" extra="已结束"/>
+            </CellGroup>
+        </Card>
+        </div>
+        <div v-if="!is_Outtime" style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <Cell title="我要报名" @click.native="checkIn()"/>
                 <Cell title="我要推荐" @click.native="recommend()" />
             </CellGroup>
         </Card>
-    </div>
+        </div>
         <div style="padding: 10px;background:#eee">
         <Card>
         <div style="text-align:center">
@@ -111,6 +119,7 @@
                 image_url: null,
                 is_real_people: false,
                 is_right_people: false,
+                is_Outtime
             }
         },
         methods: {
@@ -150,6 +159,13 @@
                             title: '生成我的专属推荐链接',
                             content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/activity?id='+this.id+'&recommend='+this.uid+'\n（长按复制，建议简单编辑活动介绍后转发推荐。）'
                 });
+            },
+            getNow() {
+                // 获取当前日期
+                var date = new Date();
+                // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+                var nowDate = date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+                return nowDate
             }
         },
     created(){
@@ -179,9 +195,20 @@
                     console.log(response);
                     that.name = response.data.data.name
                     that.describe = response.data.data.describle
-                    that.start_time = response.data.data.start_time.slice(0,10)
-                    that.end_time = response.data.data.end_time.slice(0,10)
+                    that.start_time = response.data.data.start_time.slice(0,16)
+                    that.end_time = response.data.data.end_time.slice(0,16)
                     that.image_url = response.data.data.image_url
+                    var end_time = response.data.data.end_time.slice(0,10)
+                    var endStr = end_time.replace(/-/g, "")
+                    var endInt = parseInt(endStr)
+                    var data = that.getNow()
+                    console.log(data)
+                    console.log(endInt)
+                    // var dateInt = parseInt(data)
+                    // var endInt = parseInt(end_time)
+                    if(data > endInt){
+                        that.isOuttime = true
+                    }
                 })
                 .catch(function (error) {
                     console.log(error);
