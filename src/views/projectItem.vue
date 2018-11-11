@@ -292,10 +292,13 @@
                 that.describe = response.data.data.describe
                 that.type = response.data.data.type
                 that.pic = response.data.data.image_url
-                that.resourceId = response.data.data.resourceId
+                if(response.data.data.live != null){
                 that.liveId = response.data.data.live.id
                 that.live_id = response.data.data.live.live_id
+                }
+                if(response.data.data.article != null){
                 that.article_id = response.data.data.article.id
+                }
                 var end_time = response.data.data.end_time
                 var data = that.getNow()
                 console.log(data)
