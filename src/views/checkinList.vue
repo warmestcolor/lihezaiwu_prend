@@ -25,8 +25,8 @@
                 <p style="font-size: 14px;"><Icon type="md-arrow-dropright" size=14 />这里是您已经报名的活动</p>
                 </Card>
         </div>
-        <div style="padding: 10px 20px 10px 20px"  v-for="(item, index) in activityList" :key="index">
-            <Card @click.native="goProject(item.activity_id)">
+        <div style="padding: 10px 20px 10px 20px"  v-for="(item, index) in activitylist" :key="index">
+            <Card @click.native="goActivity(item.activity_id)">
             <p slot="title">报名活动：{{item.activity.name}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
@@ -75,6 +75,9 @@
         methods: {
             goProject(itemId) {
                 this.$router.push({path: '/project'+'?id='+itemId});
+            },
+            goActivity(itemId) {
+                this.$router.push({path: '/activity'+'?id='+itemId});
             },
             handleReachBottom () {
                 return new Promise(resolve => {
