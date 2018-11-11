@@ -26,8 +26,8 @@
                 </Card>
         </div>
         <div style="padding: 10px 20px 10px 20px"  v-for="(item, index) in activityList" :key="index">
-            <Card @click.native="goProject(item.project_id)">
-            <p slot="title">报名活动：{{item.project.name}}</p>
+            <Card @click.native="goProject(item.activity_id)">
+            <p slot="title">报名活动：{{item.activity.name}}</p>
             <p href="#" slot="extra">
             {{item.inserted_at.slice(0,10)}}
             </p>
