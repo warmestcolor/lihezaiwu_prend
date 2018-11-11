@@ -76,7 +76,32 @@
             <div class="detail" v-html="details"></div> 
         </Card>
         </div>
-       <div style="padding: 10px;background:#eee">
+        <div v-if="isOuttime" style="padding: 10px;background:#eee">
+        <Card title="选项" icon="ios-options" :padding="0">
+            <CellGroup>
+                <!-- <Cell title="Only show titles" />
+                <Cell title="Display label content" label="label content" />
+                <Cell title="Display right content" extra="details" /> -->
+                <!-- <Cell v-if="is_real_people" title="项目简介" extra="浏览简介" :to="'/article?id='+article_id" />
+                <Cell v-else title="项目简介" extra="请先激活" :to="'/regist'" />
+                <Cell v-if="is_real_people" title="项目资源" extra="浏览资料" :to="'/resource?id='+id" />                
+                <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" /> -->
+                <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
+                <Cell title="我要投资" extra="已结束" />
+                <Cell title="我要推荐" extra="已结束" />
+                <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
+                <Cell title="Disabled" disabled />
+                <Cell title="Selected" selected />
+                <Cell title="With Badge" to="/components/badge">
+                    <Badge :count="10" slot="extra" />
+                </Cell>
+                <Cell title="With Switch">
+                    <Switch v-model="switchValue" slot="extra" />
+                </Cell> -->
+            </CellGroup>
+        </Card>
+        </div>
+       <div v-if="isOuttime" style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <!-- <Cell title="Only show titles" />
@@ -138,6 +163,7 @@
                 is_right_people: false,
                 recommendid: null,
                 details: null,
+                isOuttime: false
             }
         },
         methods: {
@@ -215,6 +241,29 @@
                             title: '生成我的专属推荐链接',
                             content: '这是我在力合载物的专属推荐链接，快来看看吧：\n https://weixin.leaguervc.com/project?id='+this.id+'&recommend='+this.uid+'\n（长按复制，建议简单编辑项目介绍后转发推荐，项目推荐成功，将获取项目奖励。）'
                 });
+            },
+            getNow() {
+                 // 获取当前日期
+            var date = new Date();
+
+            // 获取当前月份
+            var nowMonth = date.getMonth() + 1;
+
+            // 获取当前是几号
+            var strDate = date.getDate();
+
+            // 对月份进行处理，1-9月在前面添加一个“0”
+            if (nowMonth >= 1 && nowMonth <= 9) {
+            nowMonth = "0" + nowMonth;
+            }
+
+            // 对月份进行处理，1-9号在前面添加一个“0”
+            if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+            }
+
+            // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
+            var nowDate = date.getFullYear() + nowMonth + strDate;
             }
         },
     created(){
@@ -246,6 +295,14 @@
                 that.liveId = response.data.data.live.id
                 that.live_id = response.data.data.live.live_id
                 that.article_id = response.data.data.article.id
+                var end_time = response.data.data.end_time
+                var data = that.getNow()
+                console.log("datastring"+data)
+                var dateInt = parseInt(data)
+                var endInt = parseInt(end_time)
+                if(data > end_time){
+                    that.isOuttime = true
+                }
                 that.getRequest('/api/articles/' + that.article_id)
                 .then(function (response) {
                     console.log(response);
