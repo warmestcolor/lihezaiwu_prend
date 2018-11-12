@@ -86,7 +86,7 @@
                 <Cell v-else title="项目简介" extra="请先激活" :to="'/regist'" />
                 <Cell v-if="is_real_people" title="项目资源" extra="浏览资料" :to="'/resource?id='+id" />                
                 <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" /> -->
-                <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
+                <Cell v-if="type=='normal'" title="项目直播" extra="直播回看" @click.native="goLive(live_id)" />
                 <Cell title="我要投资" extra="已结束" />
                 <Cell title="我要推荐" extra="已结束" />
                 <!-- <Cell title="Open link in new window" to="/components/button" target="_blank" />
