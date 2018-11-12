@@ -73,7 +73,7 @@
             <p>结束时间 {{end_time}}</p>
         </Card>
         </div>
-        <div v-if="is_Outtime" style="padding: 10px;background:#eee">
+        <div v-if="isOuttime" style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <Cell title="我要报名" extra="已结束"/>
@@ -81,7 +81,7 @@
             </CellGroup>
         </Card>
         </div>
-        <div v-if="!is_Outtime" style="padding: 10px;background:#eee">
+        <div v-if="!isOuttime" style="padding: 10px;background:#eee">
         <Card title="选项" icon="ios-options" :padding="0">
             <CellGroup>
                 <Cell title="我要报名" @click.native="checkIn()"/>
@@ -119,7 +119,7 @@
                 image_url: null,
                 is_real_people: false,
                 is_right_people: false,
-                is_Outtime: false
+                isOuttime: false
             }
         },
         methods: {
