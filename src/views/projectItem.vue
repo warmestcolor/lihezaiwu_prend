@@ -60,7 +60,7 @@
     }    
     .detail {
         width: 100%;
-        word-break: break-all;
+        white-space: normal;
     }
 </style>
 <template>
