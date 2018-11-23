@@ -63,7 +63,7 @@
         padding: 10px 24px 10px 24px;
         width: 100%;
         word-break: break-all;
-        white-space:pre;
+        white-space: pre-wrap;
     }
     .detail .media-wrap.image-wrap img  {
         width: 100%;

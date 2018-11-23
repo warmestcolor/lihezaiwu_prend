@@ -303,7 +303,7 @@
 }
 .detail[data-v-78ef9fa2] {
   width: 100%;
-  white-space: pre;
+  white-space: pre-wrap;
   word-break: break-all;
 }
 
@@ -518,7 +518,7 @@
   padding: 10px 24px 10px 24px;
   width: 100%;
   word-break: break-all;
-  white-space: pre;
+  white-space: pre-wrap;
 }
 .detail .media-wrap.image-wrap img[data-v-5b5b10cc] {
   width: 100%;

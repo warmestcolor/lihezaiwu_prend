@@ -60,7 +60,7 @@
     }    
     .detail {
         width: 100%;
-        white-space:pre;
+        white-space: pre-wrap;
         word-break: break-all;
     }
 </style>
