@@ -297,7 +297,8 @@
                 .then(function (response) {
                     console.log(response);
                     var value = response.data.data.detail
-                    var result = value.replace(/img/g, "img style=\"width: 100%\"");
+                    var reg=new RegExp("<p></p>","g")
+                    var result = value.replace(/img/g, "img style=\"width: 100%\"").replace(reg, "<br>");
                     console.log('result:' + result); 
                     that.details = result
                 })
