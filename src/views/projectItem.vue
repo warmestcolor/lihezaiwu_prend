@@ -112,7 +112,8 @@
                 <Cell v-else title="项目简介" extra="请先激活" :to="'/regist'" />
                 <Cell v-if="is_real_people" title="项目资源" extra="浏览资料" :to="'/resource?id='+id" />                
                 <Cell v-else title="项目资源" extra="请先激活" :to="'/regist'" /> -->
-                <Cell v-if="type=='normal'" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
+                <Cell v-if="type=='normal'&&!liveOuttime" title="项目直播" extra="进入直播" @click.native="goLive(live_id)" />
+                <Cell v-if="type=='normal'&&liveOuttime" title="项目直播" extra="直播回看" @click.native="goLive(live_id)" />
                 <Cell v-if="is_real_people&&is_right_people&&type =='high'" title="我要投资" @click.native="checkIn()"/>
                 <Cell v-if="is_real_people&&type =='normal'" title="我要投资" @click.native="checkIn()"/>
                 <Cell v-if="!is_real_people" title="我要投资" extra="请先激活" :to="'/regist'" />
@@ -165,7 +166,9 @@
                 recommendid: null,
                 details: null,
                 isOuttime: false,
-                end_time: null
+                end_time: null,
+                live_end_time: null,
+                liveOuttime: false,
             }
         },
         methods: {
@@ -247,7 +250,6 @@
             getNow() {
                 // 获取当前日期
                 var date = new Date();
-                // 最后拼接字符串，得到一个格式为(yyyy-MM-dd)的日期
                 var nowDate = date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
                 return nowDate
             }
@@ -285,10 +287,17 @@
                 that.article_id = response.data.data.article.id
                 }
                 var end_time = response.data.data.end_time
+                var live_end_time = response.data.data.live.end_time
+                live_end_time = live_end_time.slice(0,10)
+                live_end_time = live_end_time.replace(/-/g, "")
+                live_end_time = parseInt(live_end_time)
                 var data = that.getNow()
                 console.log(data)
                 // var dateInt = parseInt(data)
                 // var endInt = parseInt(end_time)
+                if(data > live_end_time){
+                    that.liveOuttime = true
+                }
                 if(data > end_time){
                     that.isOuttime = true
                 }
