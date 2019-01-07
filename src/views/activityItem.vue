@@ -227,7 +227,7 @@
             var nonceStr = "Hahaha123";//随机串
             var timestamp = new Date().getTime();
             var shareUrl = "https://weixin.leaguervc.com/activity?id=" + this.$route.query.id
-            this.getRequest('api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
+            this.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
                 .then(function (response) {
                     console.log(response);
                     wx.config({
