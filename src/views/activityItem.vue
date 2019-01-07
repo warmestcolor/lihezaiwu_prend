@@ -101,6 +101,7 @@
 </template>
 <script>
     import util from '../libs/util'
+    var wx = require('weixin-js-sdk')
     export default {
         data () {
             return {
@@ -223,7 +224,55 @@
                 .catch(function (error) {
                     console.log(error);
                 });
-        }
-            
+            var nonceStr = "Hahaha123";//随机串
+            var timestamp = new Date().getTime();
+            var shareUrl = "https://weixin.leaguervc.com/activity?id=" + this.$route.query.id
+            this.getRequest('api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
+                .then(function (response) {
+                    console.log(response);
+                    wx.config({
+                        debug : true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId : 'wx3f179d9e380457a5', // 必填，公众号的唯一标识
+                        timestamp : timestamp, // 必填，生成签名的时间戳
+                        nonceStr : nonceStr, // 必填，生成签名的随机串
+                        signature : response.data.data.signature,// 必填，签名，见附录1
+                        jsApiList : [ 'onMenuShareAppMessage',  'onMenuShareTimeline']
+                    })
+                    wx.ready(function(){
+                        wx.onMenuShareAppMessage({
+                            title: that.name,
+                            desc: that.describe,
+                            link: shareUrl,
+                            imgUrl: that.image_url,
+                            trigger: function (res) {},
+                            success: function (res) {
+                                alert('分享成功');
+                            },
+                            cancel: function (res) {
+                                alert('你没有分享');
+                            },
+                            fail: function (res) {
+                                alert(JSON.stringify(res));
+                            }
+                        });
+                         wx.onMenuShareTimeline({
+                            title: that.name,
+                            link: shareUrl,
+                            imgUrl: that.image_url,
+                            success: function () { 
+                        // 用户确认分享后执行的回调函数
+                                alert('分享到朋友圈成功');
+                            },
+                            cancel: function () { 
+                        // 用户取消分享后执行的回调函数
+                                alert('你没有分享到朋友圈');
+                            }
+                        });
+                        })
+                    })
+                .catch(function (error) {
+                    console.log(error);
+                    });
+            },
     }
 </script>
