@@ -210,20 +210,6 @@
                     if(data > endInt){
                         that.isOuttime = true
                     }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-            this.getRequest('/api/me')
-                .then(function (response) {
-                    console.log(response);
-                    that.uid = response.data.data.id
-                    that.is_real_people = response.data.data.is_real_people
-                    that.is_right_people = response.data.data.is_right_people
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
             var nonceStr = "Hahaha123";//随机串
             var timestamp = new Date().getTime();
             var shareUrl = "https://weixin.leaguervc.com/activity?id=" + this.$route.query.id
@@ -277,6 +263,20 @@
                 .catch(function (error) {
                     console.log(error);
                     });
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            this.getRequest('/api/me')
+                .then(function (response) {
+                    console.log(response);
+                    that.uid = response.data.data.id
+                    that.is_real_people = response.data.data.is_real_people
+                    that.is_right_people = response.data.data.is_right_people
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             },
     }
 </script>
