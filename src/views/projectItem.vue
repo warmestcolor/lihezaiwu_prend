@@ -318,7 +318,14 @@
                 var nonceStr = "Hahaha123";//随机串
                 var timestamp = new Date().getTime();
                 var shareUrl = "https://weixin.leaguervc.com/project?id=" + that.$route.query.id
-                that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
+                var _url = ''
+                if (window.__wxjs_is_wkwebview === true) {
+                    _url = window.location.href
+                    } else {
+                    _url = shareUrl
+                    }
+                console.log(_url)
+                that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + encodeURIComponent(_url))
                     .then(function (response) {
                         console.log(nonceStr, timestamp, shareUrl);
                         console.log(response);
@@ -351,7 +358,7 @@
                          wx.onMenuShareTimeline({
                             title: that.name,
                             link: shareUrl,
-                            imgUrl: that.image_url,
+                            imgUrl: that.pic,
                             success: function () { 
                         // 用户确认分享后执行的回调函数
                                 alert('分享到朋友圈成功');

@@ -213,7 +213,14 @@
             var nonceStr = "Hahaha123";//随机串
             var timestamp = new Date().getTime();
             var shareUrl = "https://weixin.leaguervc.com/activity?id=" + that.$route.query.id
-            that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
+            var _url = ''
+                if (window.__wxjs_is_wkwebview === true) {
+                    _url = window.location.href
+                    } else {
+                    _url = shareUrl
+                    }
+                console.log(_url)
+            that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + encodeURIComponent(_url))
                 .then(function (response) {
                     console.log(response);
                     wx.config({
