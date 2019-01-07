@@ -341,7 +341,7 @@
                         appId : 'wx3f179d9e380457a5', // 必填，公众号的唯一标识
                         timestamp : timestamp, // 必填，生成签名的时间戳
                         nonceStr : nonceStr, // 必填，生成签名的随机串
-                        signature : response.data.data.signature,// 必填，签名，见附录1
+                        signature : response.data.signature,// 必填，签名，见附录1
                         jsApiList : [ 'onMenuShareAppMessage',  'onMenuShareTimeline']
                     })
                     wx.ready(function(){
