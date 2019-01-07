@@ -324,7 +324,7 @@
                     } else {
                     _url = shareUrl
                     }
-                console.log(_url)
+                console.log(window.location.href, _url)
                 that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + encodeURIComponent(_url))
                     .then(function (response) {
                         console.log(nonceStr, timestamp, shareUrl);
