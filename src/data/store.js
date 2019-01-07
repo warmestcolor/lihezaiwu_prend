@@ -4,12 +4,16 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state:{
         uid: null,
-        isLogin: false
+        isLogin: false,
+        entryURL: null,
     },
     mutations: {
         setuid(state, uid){
         state.uid = uid
         },
+        seturl(state, url){
+            state.entryURL = url
+            },
         ADD_LOGIN_USER (state, data) {
             sessionStorage.setItem("uid", data);
             sessionStorage.setItem("isLogin", true);

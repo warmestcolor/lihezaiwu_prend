@@ -68,6 +68,10 @@ const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
     store.commit('setuid', getCookie("uid"))
+    if(store.state.entryURL == null){
+      store.commit('seturl', "https://weixin.leaguervc.com" + to.fullPath)
+    }
+    console.log(store.state.entryURL)
     // iView.LoadingBar.start();
     Util.title(to.meta.title);
     console.log("跳转到" + to.fullPath);
@@ -122,6 +126,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
+
 });
 
 

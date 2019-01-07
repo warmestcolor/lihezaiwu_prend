@@ -144,6 +144,7 @@
 <script>
     import util from '../libs/util'
     import wx from 'weixin-js-sdk';
+    import store from '../data/store';
     export default {
         data () {
             return {
@@ -320,7 +321,7 @@
                 var shareUrl = "https://weixin.leaguervc.com/project?id=" + that.$route.query.id
                 var _url = ''
                 if (window.__wxjs_is_wkwebview === true) {
-                    _url = window.location.href
+                    _url = that.$store.state.entryURL
                     } else {
                     _url = shareUrl
                     }
