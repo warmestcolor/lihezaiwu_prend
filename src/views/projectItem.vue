@@ -318,7 +318,7 @@
                 var nonceStr = "Hahaha123";//随机串
                 var timestamp = new Date().getTime();
                 var shareUrl = "https://weixin.leaguervc.com/project?id=" + that.$route.query.id
-                this.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
+                that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + shareUrl)
                     .then(function (response) {
                         console.log(nonceStr, timestamp, shareUrl);
                         console.log(response);
