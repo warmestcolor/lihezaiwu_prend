@@ -239,6 +239,7 @@
                         jsApiList : [ 'onMenuShareAppMessage',  'onMenuShareTimeline']
                     })
                     wx.ready(function(){
+                        console.log("配置成功");
                         wx.onMenuShareAppMessage({
                             title: that.name,
                             desc: that.describe,
@@ -269,6 +270,9 @@
                             }
                         });
                         })
+                        wx.error(function(res){
+                              console.log(res)
+                        });
                     })
                 .catch(function (error) {
                     console.log(error);
