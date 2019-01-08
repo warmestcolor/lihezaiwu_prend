@@ -322,10 +322,10 @@
                 var _url = ''
                 if (window.__wxjs_is_wkwebview === true) {
                     _url = that.$store.state.entryURL
-                    alert('IOS环境' + _url);
+                    // alert('IOS环境' + _url);
                     } else {
                     _url = shareUrl
-                    alert('Android环境' + _url);
+                    // alert('Android环境' + _url);
                     }
                 console.log(window.location.href, _url)
                 that.getRequest('/api/signature?noncestr=' + nonceStr + '&timestamp=' + timestamp + '&url=' + encodeURIComponent(_url))

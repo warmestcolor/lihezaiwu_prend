@@ -47,7 +47,8 @@
 
         methods: {
             goArticle(itemId) {
-                this.$router.push({path: '/article'+'?id='+itemId});
+                window.location.href = "https://weixin.leaguervc.com/article?id=" + itemId
+                // this.$router.push({path: '/article'+'?id='+itemId});
             },
             handleStart() {
                     this.$Modal.info({

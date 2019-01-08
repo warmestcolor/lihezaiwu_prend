@@ -63,7 +63,8 @@
                 });
             },
             goLink(itemId) {
-                this.$router.push({path: '/item'+'?id='+itemId});
+                window.location.href = "https://weixin.leaguervc.com/item?id=" + itemId
+                // this.$router.push({path: '/item'+'?id='+itemId});
             }
         },
         created(){

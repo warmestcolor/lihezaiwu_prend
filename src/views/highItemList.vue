@@ -48,7 +48,8 @@
         },
         methods: {
             goProject(itemId) {
-                this.$router.push({path: '/project'+'?id='+itemId});
+                window.location.href = "https://weixin.leaguervc.com/project?id=" + itemId
+                // this.$router.push({path: '/project'+'?id='+itemId});
             },
             handleReachBottom () {
                 return new Promise(resolve => {
